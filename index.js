@@ -103,10 +103,10 @@ const commonMappings = [
   },
 ];
 
-const allConfigs = [
+const allProfiles = [
   {
-    version: 1,
-    mappings: [
+    version: "1.0.0",
+    configs: [
       ...commonMappings,
       ///////////////////////////////
       // 45s
@@ -630,8 +630,8 @@ const allConfigs = [
   },
   {
     // GGST
-    version: 1,
-    mappings: [
+    version: "1.0.0",
+    configs: [
       ...commonMappings,
       //////////////////////////////////////////////////////////////////////////
       //////////////////////////////////////////////////////////////////////////
@@ -903,8 +903,8 @@ const allConfigs = [
   },
   {
     // Smash for Everyone
-    version: 1,
-    mappings: [
+    version: "1.0.0",
+    configs: [
       ...commonMappings,
       // WORKAROUND FOR A BUG! When D -> A is pressed, A action should happen BUT
       // Because D -> A -> W exists, it lands on that "A" which doesn't have an action.
@@ -1381,10 +1381,22 @@ const convertWebActionToHardwareAction = (action) => {
   }
 };
 
-allConfigs.forEach((config) => {
-  config.mappings.forEach((mapping) => {
-    generateHardwareConfig(hardwareConfigs, mapping);
+Module.onRuntimeInitialized = () => {
+  const buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, ["string"]);
+  allProfiles.forEach((profile) => {
+    profile.configs.forEach((mapping) => {
+      generateHardwareConfig(hardwareConfigs, mapping);
+    });
+
+    const hardwareProfile = {
+      ...profile,
+      configs: hardwareConfigs,
+    };
+    console.log(hardwareProfile);
+
+    buildEdgeguardConfigBlob(JSON.stringify(hardwareProfile));
+
+    console.log(dataBlob);
+    hardwareConfigs = [];
   });
-  console.log(hardwareConfigs);
-  hardwareConfigs = [];
-});
+};
