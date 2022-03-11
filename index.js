@@ -42,40 +42,72 @@ for (const angle in angles) {
   };
 }
 
-const webConfig = [
+const commonMappings = [
+  // 90s
+  {
+    keys: ["W"],
+    action: {
+      type: "lstick",
+      ...angles[0],
+    },
+  },
+  {
+    keys: ["A"],
+    action: {
+      type: "lstick",
+      ...angles[270],
+    },
+  },
+  {
+    keys: ["S"],
+    action: {
+      type: "lstick",
+      ...angles[180],
+    },
+  },
+  {
+    keys: ["D"],
+    action: {
+      type: "lstick",
+      ...angles[90],
+    },
+  },
+  // TERTIARY BUTTONS
+  {
+    keys: ["ENTER"],
+    action: {
+      type: "button",
+      button: "PLUS",
+    },
+  },
+  {
+    keys: ["MINUS"],
+    action: {
+      type: "button",
+      button: "MINUS",
+    },
+  },
+  {
+    keys: ["HOME"],
+    action: {
+      type: "button",
+      button: "HOME",
+    },
+  },
+  {
+    keys: ["SYSRQ"],
+    action: {
+      type: "button",
+      button: "CAPTURE",
+    },
+  },
+];
+
+const allConfigs = [
   {
     version: 1,
     mappings: [
-      // 90s
-      {
-        keys: ["W"],
-        action: {
-          type: "lstick",
-          ...angles[0],
-        },
-      },
-      {
-        keys: ["A"],
-        action: {
-          type: "lstick",
-          ...angles[270],
-        },
-      },
-      {
-        keys: ["S"],
-        action: {
-          type: "lstick",
-          ...angles[180],
-        },
-      },
-      {
-        keys: ["D"],
-        action: {
-          type: "lstick",
-          ...angles[90],
-        },
-      },
-
+      ...commonMappings,
       ///////////////////////////////
       // 45s
       {
@@ -318,7 +350,7 @@ const webConfig = [
       // 15s for 90s angle modifiers
       {
         keys: ["LEFTSHIFT", "A", "D"],
-        anyOrder: true,
+        anyOrderModifier: true,
         action: {
           type: "lstick",
           ...anglesSlower[255],
@@ -334,7 +366,7 @@ const webConfig = [
       },
       {
         keys: ["LEFTSHIFT", "D", "A"],
-        anyOrder: true,
+        anyOrderModifier: true,
         action: {
           type: "lstick",
           ...anglesSlower[105],
@@ -501,43 +533,48 @@ const webConfig = [
         },
       },
 
-      // Angled Tilts
-      // RIGHT-UP
-      {
-        keys: ["DOWN", "KP9"],
-        anyOrder: true,
-        action: {
-          type: "rstick",
-          ...angles[60],
-        },
-      },
-      // RIGHT-DOWN
-      {
-        keys: ["DOWN", "KP3"],
-        anyOrder: true,
-        action: {
-          type: "rstick",
-          ...angles[120],
-        },
-      },
-      // LEFT-UP
-      {
-        keys: ["DOWN", "KP7"],
-        anyOrder: true,
-        action: {
-          type: "rstick",
-          ...angles[300],
-        },
-      },
-      // LEFT-DOWN
-      {
-        keys: ["DOWN", "KP1"],
-        anyOrder: true,
-        action: {
-          type: "rstick",
-          ...angles[240],
-        },
-      },
+      // Doesn't work, makes W and S stop working. Inherit is buggy too.
+      // // Angled Tilts
+      // // RIGHT-UP
+      // {
+      //   keys: ["W", "KP6"],
+      //   anyOrder: true,
+      //   // inherit: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[60],
+      //   },
+      // },
+      // // LEFT-UP
+      // {
+      //   keys: ["W", "KP4"],
+      //   anyOrder: true,
+      //   // inherit: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[300],
+      //   },
+      // },
+      // // RIGHT-DOWN
+      // {
+      //   keys: ["S", "KP6"],
+      //   anyOrder: true,
+      //   // inherit: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[120],
+      //   },
+      // },
+      // // LEFT-DOWN
+      // {
+      //   keys: ["S", "KP4"],
+      //   anyOrder: true,
+      //   // inherit: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[240],
+      //   },
+      // },
 
       // MAIN BUTTONS
       {
@@ -589,28 +626,13 @@ const webConfig = [
           button: "R",
         },
       },
-
-      // TERTIARY BUTTONS
-      {
-        keys: ["ENTER"],
-        action: {
-          type: "button",
-          button: "PLUS",
-        },
-      },
-      {
-        keys: ["HOME"],
-        action: {
-          type: "button",
-          button: "HOME",
-        },
-      },
     ],
   },
   {
     // GGST
     version: 1,
     mappings: [
+      ...commonMappings,
       //////////////////////////////////////////////////////////////////////////
       //////////////////////////////////////////////////////////////////////////
       /////////////////        START LEFT-HAND SECTION!!!!             ////////
@@ -624,32 +646,47 @@ const webConfig = [
           ...angles[0],
         },
       },
+
+      // WORKAROUND FOR A BUG! When D -> A is pressed, A action should happen BUT
+      // Because D -> A -> W exists, it lands on that "A" which doesn't have an action.
       {
-        keys: ["W"],
+        keys: ["A", "D"],
+        action: {
+          type: "lstick",
+          ...angles[90],
+        },
+      },
+      {
+        keys: ["D", "A"],
+        action: {
+          type: "lstick",
+          ...angles[270],
+        },
+      },
+
+      // We want straight up or down when left, right, and up/down are pressed.
+      {
+        keys: ["W", "A", "D"],
+        anyOrder: true,
         action: {
           type: "lstick",
           ...angles[0],
         },
       },
       {
-        keys: ["A"],
+        keys: ["SPACE", "A", "D"],
+        anyOrder: true,
         action: {
           type: "lstick",
-          ...angles[270],
+          ...angles[0],
         },
       },
       {
-        keys: ["S"],
+        keys: ["S", "D", "A"],
+        anyOrder: true,
         action: {
           type: "lstick",
           ...angles[180],
-        },
-      },
-      {
-        keys: ["D"],
-        action: {
-          type: "lstick",
-          ...angles[90],
         },
       },
 
@@ -698,6 +735,72 @@ const webConfig = [
       {
         keys: ["S", "D"],
         anyOrder: true,
+        action: {
+          type: "lstick",
+          ...angles[135],
+        },
+      },
+
+      // How we want 45 degree up-downs to override
+      {
+        keys: ["S", "A", "W"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[315],
+        },
+      },
+      {
+        keys: ["S", "D", "W"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[45],
+        },
+      },
+      {
+        keys: ["S", "A", "SPACE"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[315],
+        },
+      },
+      {
+        keys: ["S", "D", "SPACE"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[45],
+        },
+      },
+      {
+        keys: ["SPACE", "A", "S"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[225],
+        },
+      },
+      {
+        keys: ["SPACE", "D", "S"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[135],
+        },
+      },
+      {
+        keys: ["SPACE", "A", "S"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[225],
+        },
+      },
+      {
+        keys: ["SPACE", "D", "S"],
+        anyOrderModifier: true,
         action: {
           type: "lstick",
           ...angles[135],
@@ -796,27 +899,330 @@ const webConfig = [
           button: "RCLICK",
         },
       },
+    ],
+  },
+  {
+    // Smash for Everyone
+    version: 1,
+    mappings: [
+      ...commonMappings,
+      // WORKAROUND FOR A BUG! When D -> A is pressed, A action should happen BUT
+      // Because D -> A -> W exists, it lands on that "A" which doesn't have an action.
+      {
+        keys: ["A", "D"],
+        action: {
+          type: "lstick",
+          ...angles[90],
+        },
+      },
+      {
+        keys: ["D", "A"],
+        action: {
+          type: "lstick",
+          ...angles[270],
+        },
+      },
 
-      // TERTIARY BUTTONS
+      // We want straight up or down when left, right, and up/down are pressed.
       {
-        keys: ["ENTER"],
+        keys: ["W", "A", "D"],
+        anyOrder: true,
         action: {
-          type: "button",
-          button: "PLUS",
+          type: "lstick",
+          ...angles[0],
         },
       },
       {
-        keys: ["HOME"],
+        keys: ["S", "D", "A"],
+        anyOrder: true,
         action: {
-          type: "button",
-          button: "HOME",
+          type: "lstick",
+          ...angles[180],
+        },
+      },
+
+      ///////////////////////////////
+      // 45s
+      {
+        keys: ["W", "A"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...angles[315],
         },
       },
       {
-        keys: ["SYSRQ"],
+        keys: ["W", "D"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...angles[45],
+        },
+      },
+      {
+        keys: ["S", "A"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...angles[225],
+        },
+      },
+      {
+        keys: ["S", "D"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...angles[135],
+        },
+      },
+
+      // How we want 45 degree up-downs to override
+      {
+        keys: ["S", "A", "W"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[315],
+        },
+      },
+      {
+        keys: ["S", "D", "W"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...angles[45],
+        },
+      },
+
+      //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
+      /////////////////        START SHIFT SECTION!!!!             /////////////
+      //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
+      // 90s
+      {
+        keys: ["LEFTSHIFT", "W"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[0],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "A"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[270],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "S"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[180],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "D"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[90],
+        },
+      },
+      // 45s
+      {
+        keys: ["LEFTSHIFT", "W", "A"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[315],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "W", "D"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[45],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "S", "A"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[225],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "S", "D"],
+        anyOrder: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[135],
+        },
+      },
+
+      // Shift -> A -> D goes full right, not half right. Need to override
+      {
+        keys: ["LEFTSHIFT", "A", "D"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[90],
+        },
+      },
+      {
+        keys: ["LEFTSHIFT", "D", "A"],
+        anyOrderModifier: true,
+        action: {
+          type: "lstick",
+          ...anglesSlower[270],
+        },
+      },
+
+      //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
+      /////////////////        START RIGHT-HAND SECTION!!!!             ////////
+      //////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////
+      // LEFT
+      {
+        keys: ["KP7"],
+        action: {
+          type: "rstick",
+          ...angles[270],
+        },
+      },
+      {
+        keys: ["KP1"],
+        action: {
+          type: "rstick",
+          ...angles[270],
+        },
+      },
+      // RIGHT
+      {
+        keys: ["KP9"],
+        action: {
+          type: "rstick",
+          ...angles[90],
+        },
+      },
+      {
+        keys: ["KP3"],
+        action: {
+          type: "rstick",
+          ...angles[90],
+        },
+      },
+      // UP
+      {
+        keys: ["KP8"],
+        action: {
+          type: "rstick",
+          ...angles[0],
+        },
+      },
+      // DOWN
+      {
+        keys: ["KP2"],
+        action: {
+          type: "rstick",
+          ...angles[180],
+        },
+      },
+
+      // Doesn't work, makes W and S stop working. Inherit is buggy too.
+      // // Angled Tilts
+      // // RIGHT-UP
+      // {
+      //   keys: ["W", "KP9"],
+      //   anyOrder: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[60],
+      //   },
+      // },
+      // // LEFT-UP
+      // {
+      //   keys: ["W", "KP7"],
+      //   anyOrder: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[300],
+      //   },
+      // },
+      // // RIGHT-DOWN
+      // {
+      //   keys: ["S", "KP3"],
+      //   anyOrder: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[120],
+      //   },
+      // },
+      // // LEFT-DOWN
+      // {
+      //   keys: ["S", "KP1"],
+      //   anyOrder: true,
+      //   action: {
+      //     type: "rstick",
+      //     ...angles[240],
+      //   },
+      // },
+
+      // MAIN BUTTONS
+      {
+        keys: ["KP4"],
         action: {
           type: "button",
-          button: "CAPTURE",
+          button: "A",
+        },
+      },
+      {
+        keys: ["KP5"],
+        action: {
+          type: "button",
+          button: "B",
+        },
+      },
+      {
+        keys: ["KP6"],
+        action: {
+          type: "button",
+          button: "R",
+        },
+      },
+      {
+        keys: ["KPPLUS"],
+        action: {
+          type: "button",
+          button: "ZR",
+        },
+      },
+      {
+        keys: ["KPENTER"],
+        action: {
+          type: "button",
+          button: "ZL",
+        },
+      },
+      {
+        keys: ["SPACE"],
+        action: {
+          type: "button",
+          button: "Y",
+        },
+      },
+      {
+        keys: ["RIGHT"],
+        action: {
+          type: "button",
+          button: "X",
         },
       },
     ],
@@ -855,7 +1261,12 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
   // Keep calling this function with an array that we keep shrinking every recursive
   // call, e.g. ["W", "D"]. We only ever look at the first item. Next call would
   // be ["D"] and when we hit the last key, we apply the action onto that config.
-  const buildTree = (orderedKeys, action, hardwareConfigs, currentDepth) => {
+  const buildTree = (
+    orderedKeys,
+    webMapping,
+    hardwareConfigs,
+    currentDepth
+  ) => {
     const keyWeCareAbout = orderedKeys[0];
     const lastKey = orderedKeys.length === 1;
     // Go through the hardware config, see if we have already made a
@@ -882,6 +1293,10 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
       matchedMapping = hardwareConfigs[matchedMappingIdx];
     }
 
+    if (webMapping.inherit) {
+      matchedMapping.inherit = true;
+    }
+
     // We've still got some keys to go!
     if (!lastKey) {
       // Since we may or may not be building on a previous mapping tree,
@@ -896,13 +1311,15 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
 
       buildTree(
         orderedKeysWithoutCurrentIteration,
-        action,
+        webMapping,
         nextLevelOfTree,
         nextDepth
       );
     } else {
       // We're done and at the end! Apply the action here!
-      const hardwareAction = convertWebActionToHardwareAction(action);
+      const hardwareAction = convertWebActionToHardwareAction(
+        webMapping.action
+      );
       matchedMapping.actions = [hardwareAction];
     }
   };
@@ -928,7 +1345,7 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
   }
 
   allPossibleKeyOrders.forEach((mappingKeyCombo) => {
-    buildTree(mappingKeyCombo, mapping.action, hardwareConfigs, 0);
+    buildTree(mappingKeyCombo, mapping, hardwareConfigs, 0);
   });
 };
 
@@ -964,8 +1381,10 @@ const convertWebActionToHardwareAction = (action) => {
   }
 };
 
-webConfig[1].mappings.forEach((mapping) => {
-  generateHardwareConfig(hardwareConfigs, mapping);
+allConfigs.forEach((config) => {
+  config.mappings.forEach((mapping) => {
+    generateHardwareConfig(hardwareConfigs, mapping);
+  });
+  console.log(hardwareConfigs);
+  hardwareConfigs = [];
 });
-
-console.log(hardwareConfigs);
