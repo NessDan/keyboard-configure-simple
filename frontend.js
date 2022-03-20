@@ -10,7 +10,10 @@ const key2GroupEl = document.getElementById("key-2-group");
 const key3GroupEl = document.getElementById("key-3-group");
 const key4GroupEl = document.getElementById("key-4-group");
 const keyGroupEls = [key1GroupEl, key2GroupEl, key3GroupEl, key4GroupEl];
-const orderBtnEl = document.getElementById("order-1");
+const orderBtn1El = document.getElementById("order-1");
+const orderBtn2El = document.getElementById("order-2");
+const orderBtn3El = document.getElementById("order-3");
+const orderBtnEls = [orderBtn1El, orderBtn2El, orderBtn3El];
 
 // Output Elements
 const addMappingEl = document.getElementById("add-mapping");
@@ -43,16 +46,6 @@ const BtnRClick = "RCLICK";
 let activeActionType = LStick;
 let selectedAngle = 0;
 let selectedButton = "Y";
-
-orderBtnEl.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  if (orderBtnEl.textContent === "⇾") {
-    orderBtnEl.textContent = "⇿";
-  } else {
-    orderBtnEl.textContent = "⇾";
-  }
-});
-
 let numKeysDown = 0;
 let keysDown = [];
 let mappings = [];
@@ -131,6 +124,17 @@ const hideUnsetKeyGroups = () => {
     }
   });
 };
+
+orderBtnEls.forEach((orderBtnEl) => {
+  orderBtnEl.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    if (orderBtnEl.textContent === "⇾") {
+      orderBtnEl.textContent = "⇿";
+    } else {
+      orderBtnEl.textContent = "⇾";
+    }
+  });
+});
 
 actionTypeEl.addEventListener("change", (evt) => {
   activeActionType = actionTypeEl.value;
