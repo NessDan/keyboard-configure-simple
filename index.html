@@ -2,9 +2,87 @@
 <html>
   <head>
     <title>keyboard.gg - Configuration Tool</title>
+
+    <link rel="stylesheet" href="index.css" />
   </head>
+
   <body>
-    <script type="text/javascript">
+    <h1>Edgeguard Configurator <em>9000!</em></h1>
+    <div class="key-mapping-row">
+      <div class="key-group" id="key-1-group">
+        <div class="key big">
+          <span id="key-1-text">W</span>
+        </div>
+      </div>
+
+      <div class="key-group" id="key-2-group">
+        <div class="order big">
+          <button class="order-button" id="order-1">⇿</button>
+        </div>
+
+        <div class="key big">
+          <span id="key-2-text">D</span>
+        </div>
+      </div>
+
+      <div class="key-group" id="key-3-group">
+        <div class="order big">
+          <button class="order-button" id="order-2">⇿</button>
+        </div>
+
+        <div class="key big">
+          <span id="key-3-text">Q</span>
+        </div>
+      </div>
+
+      <div class="key-group" id="key-4-group">
+        <div class="order big">
+          <button class="order-button" id="order-3">⇿</button>
+        </div>
+
+        <div class="key big">
+          <span id="key-4-text">Shift</span>
+        </div>
+      </div>
+
+      <div class="key-group">
+        <div class="order big">
+          <span class="order-button">=</button>
+        </div>
+
+        <div class="output big">
+          <select name="action-type-select" id="action-type-select">
+            <option value="lstick">Left Stick Angle</option>
+            <option value="rstick">Right Stick Angle</option>
+            <option value="button">Button / Triggers / Stick-Click</option>
+            <option value="dpad">D-Pad</option>
+          </select>
+          <div id="angle-select-wrapper"><input type="number" name="angle-select" id="angle-select" step="15" min="0" max="360">&deg;</div>
+          <select name="button-select" id="button-select">
+            <option value="Y">Y</option>
+            <option value="B">B</option>
+            <option value="A">A</option>
+            <option value="X">X</option>
+            <option value="L">L</option>
+            <option value="R">R</option>
+            <option value="ZL">ZL</option>
+            <option value="ZR">ZR</option>
+            <option value="MINUS">Select / Minus</option>
+            <option value="PLUS">Start / Plus</option>
+            <option value="HOME">Home</option>
+            <option value="CAPTURE">Capture</option>
+            <option value="LCLICK">Left Stick Click</option>
+            <option value="RCLICK">Right Stick Click</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <button id="add-mapping">Add Mapping</button>
+
+    <script type="module" src="frontend.js"></script>
+
+    <!-- <script type="text/javascript">
       // Sets up the WASM printf to be captured properly
       let dataBlob;
       var Module = {
@@ -16,6 +94,6 @@
       };
     </script>
     <script async type="text/javascript" src="config-generator.js"></script>
-    <script src="index.js"></script>
+    <script src="index.js"></script> -->
   </body>
 </html>
