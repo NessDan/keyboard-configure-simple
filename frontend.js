@@ -14,6 +14,7 @@ const orderBtn1El = document.getElementById("order-1");
 const orderBtn2El = document.getElementById("order-2");
 const orderBtn3El = document.getElementById("order-3");
 const orderBtnEls = [orderBtn1El, orderBtn2El, orderBtn3El];
+const savedMappingsEl = document.getElementById("saved-mappings");
 
 // Output Elements
 const addMappingEl = document.getElementById("add-mapping");
@@ -90,18 +91,22 @@ addMappingEl.addEventListener("click", (evt) => {
   switch (activeActionType) {
     case LStick:
     case RStick:
-      mappingToPush.x = angles[selectedAngle]?.x;
-      mappingToPush.y = angles[selectedAngle]?.y;
+      mappingToPush.action.x = angles[selectedAngle]?.x;
+      mappingToPush.action.y = angles[selectedAngle]?.y;
       break;
     case Button:
-      mappingToPush.button = selectedButton;
+      mappingToPush.action.button = selectedButton;
       break;
   }
 
   mappings.push(mappingToPush);
 
   console.log(mappings);
-  document.body.focus();
+  document.body.focus(); // Prevent the "Add Mappings" button from being accidentally clicked again, e.g. someone hits "Space"
+
+  mappings.sort(); // TODO: Sort based on action type and the number of keys (less being higher, more being lower.)
+
+  renderMappingsOnPage();
 });
 
 const keysDownToElements = () => {
@@ -113,6 +118,16 @@ const keysDownToElements = () => {
   });
 
   // TODO: Hide extra elements after setting text.
+};
+
+const renderMappingsOnPage = () => {
+  savedMappingsEl.innerHTML = "";
+
+  mappings.forEach((mapping, idx) => {
+    savedMappingsEl.innerHTML += `<div id="mapping-${idx}">
+        ${mapping.keys[0]} = ${mapping.action.type} @ ${mapping.action.x}x ${mapping.action.y}y
+      </div>`;
+  });
 };
 
 const hideUnsetKeyGroups = () => {

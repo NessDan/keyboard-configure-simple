@@ -28,3 +28,12 @@
 .hidden {
   display: none;
 }
+
+.output {
+  display: flex;
+  flex-direction: column;
+}
+
+.output > * {
+  margin-bottom: 12px;
+}
