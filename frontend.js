@@ -1,4 +1,13 @@
 import angles from "./angles.js";
+import {
+  LStick,
+  RStick,
+  Button,
+  DPad,
+  actionOrders,
+  actionSortOrder,
+} from "./enums.js";
+import { SavedMappings } from "./components/SavedMappings.js";
 
 const key1TextEl = document.getElementById("key-1-text");
 const key2TextEl = document.getElementById("key-2-text");
@@ -14,7 +23,16 @@ const orderBtn1El = document.getElementById("order-1");
 const orderBtn2El = document.getElementById("order-2");
 const orderBtn3El = document.getElementById("order-3");
 const orderBtnEls = [orderBtn1El, orderBtn2El, orderBtn3El];
-const savedMappingsEl = document.getElementById("saved-mappings");
+const savedMappingsLStickEl = document.getElementById("saved-mappings-lstick");
+const savedMappingsRStickEl = document.getElementById("saved-mappings-rstick");
+const savedMappingsButtonEl = document.getElementById("saved-mappings-button");
+const savedMappingsDPadEl = document.getElementById("saved-mappings-dpad");
+const savedMappingsEls = [
+  savedMappingsLStickEl,
+  savedMappingsRStickEl,
+  savedMappingsButtonEl,
+  savedMappingsDPadEl,
+];
 
 // Output Elements
 const addMappingEl = document.getElementById("add-mapping");
@@ -22,26 +40,6 @@ const actionTypeEl = document.getElementById("action-type-select");
 const angleSelectEl = document.getElementById("angle-select");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
 const buttonSelectEl = document.getElementById("button-select");
-
-// ENUMS
-const LStick = "lstick";
-const RStick = "rstick";
-const Button = "button";
-const DPad = "dpad";
-const BtnY = "Y";
-const BtnB = "B";
-const BtnA = "A";
-const BtnX = "X";
-const BtnL = "L";
-const BtnR = "R";
-const BtnZL = "ZL";
-const BtnZR = "ZR";
-const BtnMinus = "MINUS";
-const BtnPlus = "PLUS";
-const BtnHome = "HOME";
-const BtnCapture = "CAPTURE";
-const BtnLClick = "LCLICK";
-const BtnRClick = "RCLICK";
 
 // Globals
 let activeActionType = LStick;
@@ -62,12 +60,14 @@ document.addEventListener("keydown", (evt) => {
 
   numKeysDown++;
 
-  console.log(evt.code);
+  // Don't allow duplicates into keysDown (e.g. someone holds "W", then keeps tapping "D")
+  // Don't allow more than 4 keys to be held down
+  if (!keysDown.includes(evt.code) && keysDown.length < 4) {
+    keysDown.push(evt.code);
 
-  keysDown.push(evt.code);
-
-  keysDownToElements();
-  hideUnsetKeyGroups();
+    keysDownToElements();
+    hideUnsetKeyGroups();
+  }
 });
 
 document.addEventListener("keyup", (evt) => {
@@ -81,8 +81,30 @@ document.addEventListener("keyup", (evt) => {
 addMappingEl.addEventListener("click", (evt) => {
   evt.preventDefault();
 
+  // Format for W ⇿ A ⇾ Q = [["W", "A"], ["Q"]] (Nested array is an "any order" grouping.)
+  let groupCounter = 0;
+  let keyInGroupCounter = 0;
+  const keyGroups = [[]];
+
+  keysDown.forEach((keyDown, keyIdx) => {
+    // Always add in the first key
+    keyGroups[groupCounter][keyInGroupCounter] = keyDown;
+    keyInGroupCounter++;
+
+    // If we're dealing with a key that has a corresponding orderButton (last key doesn't have one)
+    if (keyIdx < orderBtnEls.length) {
+      // Check the corresponding order button's text to see whether we start a new array in keysDown or keep adding
+      // to the existing one
+      if (orderBtnEls[keyIdx].innerText === "⇾") {
+        groupCounter++;
+        keyInGroupCounter = 0;
+        keyGroups[groupCounter] = []; // Gotta initialize that new array
+      }
+    }
+  });
+
   const mappingToPush = {
-    keys: [keysDown],
+    keys: keyGroups,
     action: {
       type: activeActionType,
     },
@@ -104,8 +126,6 @@ addMappingEl.addEventListener("click", (evt) => {
   console.log(mappings);
   document.body.focus(); // Prevent the "Add Mappings" button from being accidentally clicked again, e.g. someone hits "Space"
 
-  mappings.sort(); // TODO: Sort based on action type and the number of keys (less being higher, more being lower.)
-
   renderMappingsOnPage();
 });
 
@@ -121,12 +141,34 @@ const keysDownToElements = () => {
 };
 
 const renderMappingsOnPage = () => {
-  savedMappingsEl.innerHTML = "";
+  mappings.sort((a, b) => {
+    if (a.keys.flat().length < b.keys.flat().length) {
+      return -1;
+    }
+  });
 
-  mappings.forEach((mapping, idx) => {
-    savedMappingsEl.innerHTML += `<div id="mapping-${idx}">
-        ${mapping.keys[0]} = ${mapping.action.type} @ ${mapping.action.x}x ${mapping.action.y}y
-      </div>`;
+  mappings.sort((a, b) => {
+    if (actionSortOrder[a.action.type] < actionSortOrder[b.action.type]) {
+      return -1;
+    }
+  });
+
+  savedMappingsEls.forEach((savedMappingsEl, idx) => {
+    // Clear out the DOM
+    savedMappingsEl.innerHTML = "";
+
+    let htmlToSet = "";
+
+    const mappingsForSection = mappings.filter(
+      (mapping) => mapping.action.type === actionOrders[idx]
+    );
+
+    // Loop over mappings
+    mappingsForSection.forEach((mapping, idx) => {
+      htmlToSet += SavedMappings(idx, mapping);
+    });
+
+    savedMappingsEl.insertAdjacentHTML("beforeend", htmlToSet);
   });
 };
 
@@ -140,6 +182,8 @@ const hideUnsetKeyGroups = () => {
   });
 };
 
+hideUnsetKeyGroups();
+
 orderBtnEls.forEach((orderBtnEl) => {
   orderBtnEl.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -151,21 +195,27 @@ orderBtnEls.forEach((orderBtnEl) => {
   });
 });
 
-actionTypeEl.addEventListener("change", (evt) => {
-  activeActionType = actionTypeEl.value;
+const watchActionInputs = () => {
+  const showRelevantActionInputs = () => {
+    activeActionType = actionTypeEl.value;
 
-  switch (activeActionType) {
-    case LStick:
-    case RStick:
-      angleSelectWrapperEl.classList.remove("hidden");
-      buttonSelectEl.classList.add("hidden");
-      break;
-    case Button:
-      buttonSelectEl.classList.remove("hidden");
-      angleSelectWrapperEl.classList.add("hidden");
-      break;
-  }
-});
+    switch (activeActionType) {
+      case LStick:
+      case RStick:
+        angleSelectWrapperEl.classList.remove("hidden");
+        buttonSelectEl.classList.add("hidden");
+        break;
+      case Button:
+        buttonSelectEl.classList.remove("hidden");
+        angleSelectWrapperEl.classList.add("hidden");
+        break;
+    }
+  };
+
+  actionTypeEl.addEventListener("change", showRelevantActionInputs);
+
+  showRelevantActionInputs();
+};
 
 angleSelectEl.addEventListener("change", (evt) => {
   selectedAngle = angleSelectEl.value;
@@ -183,3 +233,5 @@ document.querySelectorAll("input, select, option").forEach((inputEl) => {
   inputEl.addEventListener("keydown", stopDefaultAndPropogation);
   inputEl.addEventListener("keyup", stopDefaultAndPropogation);
 });
+
+watchActionInputs();

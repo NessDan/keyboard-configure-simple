@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <h1>Edgeguard Configurator <em>9000!</em></h1>
+    <h1>Edgeguard Baremetal Configuration Tool <em><small>(Pre-Alpha)</small></em> <br /><small style="font-size:12px;font-weight:normal">This tool is for internal use only.</small></h1>
     <div class="key-mapping-row">
       <div class="key-group" id="key-1-group">
         <div class="key big">
@@ -57,7 +57,7 @@
             <option value="button">Button / Triggers / Stick-Click</option>
             <option value="dpad">D-Pad</option>
           </select>
-          <div id="angle-select-wrapper"><input type="number" name="angle-select" id="angle-select" step="15" min="0" max="360">&deg;</div>
+          <div id="angle-select-wrapper"><input type="number" name="angle-select" id="angle-select" step="15" min="0" max="360" value="0" />&deg;</div>
           <select name="button-select" id="button-select">
             <option value="Y">Y</option>
             <option value="B">B</option>
@@ -79,7 +79,27 @@
       </div>
     </div>
 
-    <div id="saved-mappings"></div>
+    <div id="saved-mappings">
+      <section>
+        <h2>Left Stick</h2>
+        <div id="saved-mappings-lstick"></div>
+      </section>
+      
+      <section>
+        <h2>Right Stick</h2>
+        <div id="saved-mappings-rstick"></div>
+      </section>
+      
+      <section>
+        <h2>Buttons</h2>
+        <div id="saved-mappings-button"></div>
+      </section>
+      
+      <section>
+        <h2>D-Pad</h2>
+        <div id="saved-mappings-dpad"></div>
+      </section>
+    </div>
 
     <script type="module" src="frontend.js"></script>
 
