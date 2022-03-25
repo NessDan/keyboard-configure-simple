@@ -11,10 +11,10 @@ export const SavedMappings = (idx, mapping) => {
   switch (mapping.action.type) {
     case LStick:
     case RStick:
-      actionOutputValue = `@ ${mapping.action.x}x ${mapping.action.y}y`;
+      actionOutputValue = `🕹️ ${mapping.action.angle}&deg; @ ${mapping.action.stickDistance}%`;
       break;
     case Button:
-      actionOutputValue = `${mapping.action.button}`;
+      actionOutputValue = `🔘 ${mapping.action.button}`;
       break;
     case DPad:
       actionOutputValue = `${mapping.action.dpad}`;
@@ -22,11 +22,11 @@ export const SavedMappings = (idx, mapping) => {
   }
 
   return `
-    <div id="mapping-${idx}">
+    <div class="saved-mapping" id="mapping-${idx}">
       ${keyString} = ${
     actionsToStrings[mapping.action.type]
   } ${actionOutputValue}
-      <input type="button" value="❌" data-mappingidx="${idx}" onClick="window.deleteMapping(this)" />
+      <input class="delete-mapping" type="button" value="❌" data-mappingidx="${idx}" onClick="window.deleteMapping(this)" />
     </div>
   `;
 };

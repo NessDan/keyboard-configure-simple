@@ -37,3 +37,11 @@
 .output > * {
   margin-bottom: 12px;
 }
+
+.delete-mapping {
+  visibility: hidden;
+}
+
+.saved-mapping:hover .delete-mapping {
+  visibility: visible;
+}

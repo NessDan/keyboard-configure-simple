@@ -38,12 +38,14 @@ const savedMappingsEls = [
 const addMappingEl = document.getElementById("add-mapping");
 const actionTypeEl = document.getElementById("action-type-select");
 const angleSelectEl = document.getElementById("angle-select");
+const stickDistanceEl = document.getElementById("stick-distance");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
 const buttonSelectEl = document.getElementById("button-select");
 
 // Globals
 let activeActionType = LStick;
 let selectedAngle = 0;
+let stickDistance = 100;
 let selectedButton = "Y";
 let numKeysDown = 0;
 let keysDown = [];
@@ -81,6 +83,10 @@ document.addEventListener("keyup", (evt) => {
 addMappingEl.addEventListener("click", (evt) => {
   evt.preventDefault();
 
+  if (keysDown.length === 0) {
+    return; // Nothing to do here.
+  }
+
   // Format for W ⇿ A ⇾ Q = [["W", "A"], ["Q"]] (Nested array is an "any order" grouping.)
   let groupCounter = 0;
   let keyInGroupCounter = 0;
@@ -113,8 +119,8 @@ addMappingEl.addEventListener("click", (evt) => {
   switch (activeActionType) {
     case LStick:
     case RStick:
-      mappingToPush.action.x = angles[selectedAngle]?.x;
-      mappingToPush.action.y = angles[selectedAngle]?.y;
+      mappingToPush.action.angle = selectedAngle;
+      mappingToPush.action.stickDistance = stickDistance;
       break;
     case Button:
       mappingToPush.action.button = selectedButton;
@@ -126,6 +132,10 @@ addMappingEl.addEventListener("click", (evt) => {
   console.log(mappings);
   document.body.focus(); // Prevent the "Add Mappings" button from being accidentally clicked again, e.g. someone hits "Space"
 
+  // Clear the keys so they don't accidentally re-add their mapping
+  keysDown = [];
+  keysDownToElements();
+  hideUnsetKeyGroups();
   renderMappingsOnPage();
 });
 
@@ -173,8 +183,12 @@ const renderMappingsOnPage = () => {
     );
 
     // Loop over mappings
-    mappingsForSection.forEach((mapping, idx) => {
-      htmlToSet += SavedMappings(idx, mapping);
+    mappingsForSection.forEach((mapping) => {
+      // Need to use the index in the full mapping array, not just this filtered set.
+      const mappingTrueIdx = mappings.findIndex(
+        (originalMapping) => originalMapping === mapping
+      );
+      htmlToSet += SavedMappings(mappingTrueIdx, mapping);
     });
 
     savedMappingsEl.insertAdjacentHTML("beforeend", htmlToSet);
@@ -228,6 +242,10 @@ const watchActionInputs = () => {
 
 angleSelectEl.addEventListener("change", (evt) => {
   selectedAngle = angleSelectEl.value;
+});
+
+stickDistanceEl.addEventListener("change", (evt) => {
+  stickDistance = stickDistanceEl.value;
 });
 
 buttonSelectEl.addEventListener("change", (evt) => {
