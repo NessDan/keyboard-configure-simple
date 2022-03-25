@@ -129,6 +129,15 @@ addMappingEl.addEventListener("click", (evt) => {
   renderMappingsOnPage();
 });
 
+// Have to set this to window so the SavedMapping component can call to it
+// https://medium.com/codex/global-variables-and-javascript-modules-ce674a869164
+window.deleteMapping = (ele) => {
+  const idxToDelete = Number(ele.getAttribute("data-mappingidx"));
+  mappings = mappings.filter((mapping, idx) => idx !== idxToDelete);
+
+  renderMappingsOnPage();
+};
+
 const keysDownToElements = () => {
   keysDown.forEach((key, idx) => {
     if (idx >= keyTextEls.length) return;

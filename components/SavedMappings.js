@@ -26,6 +26,7 @@ export const SavedMappings = (idx, mapping) => {
       ${keyString} = ${
     actionsToStrings[mapping.action.type]
   } ${actionOutputValue}
+      <input type="button" value="❌" data-mappingidx="${idx}" onClick="window.deleteMapping(this)" />
     </div>
   `;
 };
