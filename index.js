@@ -1234,6 +1234,7 @@ let hardwareConfigs = [];
 // https://stackoverflow.com/a/20871714/231730
 function generateAllPossibleArrays(inputArr) {
   var results = [];
+  var allResults = [];
 
   function permute(arr, memo) {
     var cur,
@@ -1251,7 +1252,35 @@ function generateAllPossibleArrays(inputArr) {
     return results;
   }
 
-  return permute(inputArr);
+  function convertArrayOfPermsToStrings(arrayPerms) {
+    allPremutations = arrayPerms[0];
+
+    for (resultIdx in arrayPerms) {
+      const result = arrayPerms[resultIdx];
+      if (resultIdx === "0") {
+        continue;
+      }
+      let newTotal = [];
+      for (oldTotalIdx in allPremutations) {
+        const oldTotal = allPremutations[oldTotalIdx];
+        for (permIdx in result) {
+          const perm = result[permIdx];
+          newTotal.push(oldTotal.concat(perm));
+        }
+      }
+      allPremutations = newTotal;
+    }
+
+    return allPremutations;
+  }
+
+  inputArr.forEach((arr) => {
+    permute(arr);
+    allResults.push(results);
+    results = [];
+  });
+
+  return convertArrayOfPermsToStrings(allResults);
 }
 
 const generateHardwareConfig = (hardwareConfigs, mapping) => {
