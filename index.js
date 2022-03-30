@@ -45,28 +45,28 @@ for (const angle in angles) {
 const commonMappings = [
   // 90s
   {
-    keys: ["W"],
+    keys: [["W"]],
     action: {
       type: "lstick",
       ...angles[0],
     },
   },
   {
-    keys: ["A"],
+    keys: [["A"]],
     action: {
       type: "lstick",
       ...angles[270],
     },
   },
   {
-    keys: ["S"],
+    keys: [["S"]],
     action: {
       type: "lstick",
       ...angles[180],
     },
   },
   {
-    keys: ["D"],
+    keys: [["D"]],
     action: {
       type: "lstick",
       ...angles[90],
@@ -74,28 +74,28 @@ const commonMappings = [
   },
   // TERTIARY BUTTONS
   {
-    keys: ["ENTER"],
+    keys: [["ENTER"]],
     action: {
       type: "button",
       button: "PLUS",
     },
   },
   {
-    keys: ["MINUS"],
+    keys: [["MINUS"]],
     action: {
       type: "button",
       button: "MINUS",
     },
   },
   {
-    keys: ["HOME"],
+    keys: [["HOME"]],
     action: {
       type: "button",
       button: "HOME",
     },
   },
   {
-    keys: ["SYSRQ"],
+    keys: [["SYSRQ"]],
     action: {
       type: "button",
       button: "CAPTURE",
@@ -111,32 +111,28 @@ const allProfiles = [
       ///////////////////////////////
       // 45s
       {
-        keys: ["W", "A"],
-        anyOrder: true,
+        keys: [["W", "A"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["W", "D"],
-        anyOrder: true,
+        keys: [["W", "D"]],
         action: {
           type: "lstick",
           ...angles[45],
         },
       },
       {
-        keys: ["S", "A"],
-        anyOrder: true,
+        keys: [["S", "A"]],
         action: {
           type: "lstick",
           ...angles[225],
         },
       },
       {
-        keys: ["S", "D"],
-        anyOrder: true,
+        keys: [["S", "D"]],
         action: {
           type: "lstick",
           ...angles[135],
@@ -146,62 +142,56 @@ const allProfiles = [
       ///////////////////////////////
       // 15s for 90s angle modifiers
       {
-        keys: ["A", "D"],
+        keys: [["A", "D"]],
         action: {
           type: "lstick",
           ...angles[255],
         },
       },
       {
-        keys: ["A", "E"],
-        anyOrder: true,
+        keys: [["A", "E"]],
         action: {
           type: "lstick",
           ...angles[285],
         },
       },
       {
-        keys: ["D", "A"],
+        keys: [["D", "A"]],
         action: {
           type: "lstick",
           ...angles[105],
         },
       },
       {
-        keys: ["D", "Q"],
-        anyOrder: true,
+        keys: [["D", "Q"]],
         action: {
           type: "lstick",
           ...angles[75],
         },
       },
       {
-        keys: ["W", "Q"],
-        anyOrder: true,
+        keys: [["W", "Q"]],
         action: {
           type: "lstick",
           ...angles[345],
         },
       },
       {
-        keys: ["W", "E"],
-        anyOrder: true,
+        keys: [["W", "E"]],
         action: {
           type: "lstick",
           ...angles[15],
         },
       },
       {
-        keys: ["S", "Q"],
-        anyOrder: true,
+        keys: [["S", "Q"]],
         action: {
           type: "lstick",
           ...angles[195],
         },
       },
       {
-        keys: ["S", "E"],
-        anyOrder: true,
+        keys: [["S", "E"]],
         action: {
           type: "lstick",
           ...angles[165],
@@ -211,64 +201,56 @@ const allProfiles = [
       ///////////////////////////////
       // 15s for 45s
       {
-        keys: ["W", "A", "E"],
-        anyOrder: true,
+        keys: [["W", "A", "E"]],
         action: {
           type: "lstick",
           ...angles[330],
         },
       },
       {
-        keys: ["W", "A", "D"],
-        anyOrderModifier: true,
+        keys: [["W", "A"], ["D"]],
         action: {
           type: "lstick",
           ...angles[300],
         },
       },
       {
-        keys: ["W", "D", "Q"],
-        anyOrder: true,
+        keys: [["W", "D", "Q"]],
         action: {
           type: "lstick",
           ...angles[30],
         },
       },
       {
-        keys: ["W", "D", "A"],
-        anyOrderModifier: true,
+        keys: [["W", "D"], ["A"]],
         action: {
           type: "lstick",
           ...angles[60],
         },
       },
       {
-        keys: ["S", "A", "E"],
-        anyOrder: true,
+        keys: [["S", "A", "E"]],
         action: {
           type: "lstick",
           ...angles[240],
         },
       },
       {
-        keys: ["S", "A", "D"],
-        anyOrderModifier: true,
+        keys: [["S", "A"], ["D"]],
         action: {
           type: "lstick",
           ...angles[210],
         },
       },
       {
-        keys: ["S", "D", "Q"],
-        anyOrder: true,
+        keys: [["S", "D", "Q"]],
         action: {
           type: "lstick",
           ...angles[120],
         },
       },
       {
-        keys: ["S", "D", "A"],
-        anyOrderModifier: true,
+        keys: [["S", "D"], ["A"]],
         action: {
           type: "lstick",
           ...angles[150],
@@ -282,32 +264,28 @@ const allProfiles = [
       //////////////////////////////////////////////////////////////////////////
       // 90s
       {
-        keys: ["LEFTSHIFT", "W"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W"]],
         action: {
           type: "lstick",
           ...anglesSlower[0],
         },
       },
       {
-        keys: ["LEFTSHIFT", "A"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "A"]],
         action: {
           type: "lstick",
           ...anglesSlower[270],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S"]],
         action: {
           type: "lstick",
           ...anglesSlower[180],
         },
       },
       {
-        keys: ["LEFTSHIFT", "D"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "D"]],
         action: {
           type: "lstick",
           ...anglesSlower[90],
@@ -315,32 +293,28 @@ const allProfiles = [
       },
       // 45s
       {
-        keys: ["LEFTSHIFT", "W", "A"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "A"]],
         action: {
           type: "lstick",
           ...anglesSlower[315],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "D"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "D"]],
         action: {
           type: "lstick",
           ...anglesSlower[45],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "A"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "A"]],
         action: {
           type: "lstick",
           ...anglesSlower[225],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "D"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "D"]],
         action: {
           type: "lstick",
           ...anglesSlower[135],
@@ -349,64 +323,56 @@ const allProfiles = [
       ///////////////////////////////
       // 15s for 90s angle modifiers
       {
-        keys: ["LEFTSHIFT", "A", "D"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "A"], ["D"]],
         action: {
           type: "lstick",
           ...anglesSlower[255],
         },
       },
       {
-        keys: ["LEFTSHIFT", "A", "E"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "A", "E"]],
         action: {
           type: "lstick",
           ...anglesSlower[285],
         },
       },
       {
-        keys: ["LEFTSHIFT", "D", "A"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "D"], ["A"]],
         action: {
           type: "lstick",
           ...anglesSlower[105],
         },
       },
       {
-        keys: ["LEFTSHIFT", "D", "Q"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "D", "Q"]],
         action: {
           type: "lstick",
           ...anglesSlower[75],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "Q"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "Q"]],
         action: {
           type: "lstick",
           ...anglesSlower[345],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "E"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "E"]],
         action: {
           type: "lstick",
           ...anglesSlower[15],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "Q"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "Q"]],
         action: {
           type: "lstick",
           ...anglesSlower[195],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "E"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "E"]],
         action: {
           type: "lstick",
           ...anglesSlower[165],
@@ -415,64 +381,56 @@ const allProfiles = [
       ///////////////////////////////
       // 15s for 45s
       {
-        keys: ["LEFTSHIFT", "W", "A", "E"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "A", "E"]],
         action: {
           type: "lstick",
           ...anglesSlower[330],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "A", "D"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "W", "A"], ["D"]],
         action: {
           type: "lstick",
           ...anglesSlower[300],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "D", "Q"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "D", "Q"]],
         action: {
           type: "lstick",
           ...anglesSlower[30],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "D", "A"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "W", "D"], ["A"]],
         action: {
           type: "lstick",
           ...anglesSlower[60],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "A", "E"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "A", "E"]],
         action: {
           type: "lstick",
           ...anglesSlower[240],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "A", "D"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "S", "A"], ["D"]],
         action: {
           type: "lstick",
           ...anglesSlower[210],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "D", "Q"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "D", "Q"]],
         action: {
           type: "lstick",
           ...anglesSlower[120],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "D", "A"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "S", "D"], ["A"]],
         action: {
           type: "lstick",
           ...anglesSlower[150],
@@ -486,7 +444,7 @@ const allProfiles = [
       //////////////////////////////////////////////////////////////////////////
       // LEFT
       {
-        keys: ["KP4"],
+        keys: [["KP4"]],
         action: {
           type: "rstick",
           ...angles[270],
@@ -494,7 +452,7 @@ const allProfiles = [
       },
       // RIGHT
       {
-        keys: ["KP6"],
+        keys: [["KP6"]],
         action: {
           type: "rstick",
           ...angles[90],
@@ -502,7 +460,7 @@ const allProfiles = [
       },
       // UP-LEFT
       {
-        keys: ["KP7"],
+        keys: [["KP7"]],
         action: {
           type: "rstick",
           ...angles[330],
@@ -510,7 +468,7 @@ const allProfiles = [
       },
       // UP-RIGHT
       {
-        keys: ["KP9"],
+        keys: [["KP9"]],
         action: {
           type: "rstick",
           ...angles[30],
@@ -518,7 +476,7 @@ const allProfiles = [
       },
       // DOWN-LEFT
       {
-        keys: ["KP1"],
+        keys: [["KP1"]],
         action: {
           type: "rstick",
           ...angles[210],
@@ -526,7 +484,7 @@ const allProfiles = [
       },
       // DOWN-RIGHT
       {
-        keys: ["KP3"],
+        keys: [["KP3"]],
         action: {
           type: "rstick",
           ...angles[150],
@@ -537,8 +495,7 @@ const allProfiles = [
       // // Angled Tilts
       // // RIGHT-UP
       // {
-      //   keys: ["W", "KP6"],
-      //   anyOrder: true,
+      //  [ keys: [["W", "KP6"]]],
       //   // inherit: true,
       //   action: {
       //     type: "rstick",
@@ -547,8 +504,7 @@ const allProfiles = [
       // },
       // // LEFT-UP
       // {
-      //   keys: ["W", "KP4"],
-      //   anyOrder: true,
+      //  [ keys: [["W", "KP4"]]],
       //   // inherit: true,
       //   action: {
       //     type: "rstick",
@@ -557,8 +513,7 @@ const allProfiles = [
       // },
       // // RIGHT-DOWN
       // {
-      //   keys: ["S", "KP6"],
-      //   anyOrder: true,
+      //  [ keys: [["S", "KP6"]]],
       //   // inherit: true,
       //   action: {
       //     type: "rstick",
@@ -567,8 +522,7 @@ const allProfiles = [
       // },
       // // LEFT-DOWN
       // {
-      //   keys: ["S", "KP4"],
-      //   anyOrder: true,
+      //  [ keys: [["S", "KP4"]]],
       //   // inherit: true,
       //   action: {
       //     type: "rstick",
@@ -578,49 +532,49 @@ const allProfiles = [
 
       // MAIN BUTTONS
       {
-        keys: ["KP5"],
+        keys: [["KP5"]],
         action: {
           type: "button",
           button: "A",
         },
       },
       {
-        keys: ["KP8"],
+        keys: [["KP8"]],
         action: {
           type: "button",
           button: "B",
         },
       },
       {
-        keys: ["KP2"],
+        keys: [["KP2"]],
         action: {
           type: "button",
           button: "L",
         },
       },
       {
-        keys: ["SPACE"],
+        keys: [["SPACE"]],
         action: {
           type: "button",
           button: "Y",
         },
       },
       {
-        keys: ["RIGHT"],
+        keys: [["RIGHT"]],
         action: {
           type: "button",
           button: "X",
         },
       },
       {
-        keys: ["KPPLUS"],
+        keys: [["KPPLUS"]],
         action: {
           type: "button",
           button: "ZR",
         },
       },
       {
-        keys: ["KPENTER"],
+        keys: [["KPENTER"]],
         action: {
           type: "button",
           button: "R",
@@ -640,7 +594,7 @@ const allProfiles = [
       //////////////////////////////////////////////////////////////////////////
       // 90s
       {
-        keys: ["SPACE"], // Space as jump!
+        keys: [["SPACE"]],
         action: {
           type: "lstick",
           ...angles[0],
@@ -650,14 +604,14 @@ const allProfiles = [
       // WORKAROUND FOR A BUG! When D -> A is pressed, A action should happen BUT
       // Because D -> A -> W exists, it lands on that "A" which doesn't have an action.
       {
-        keys: ["A", "D"],
+        keys: [["A", "D"]],
         action: {
           type: "lstick",
           ...angles[90],
         },
       },
       {
-        keys: ["D", "A"],
+        keys: [["D", "A"]],
         action: {
           type: "lstick",
           ...angles[270],
@@ -666,24 +620,21 @@ const allProfiles = [
 
       // We want straight up or down when left, right, and up/down are pressed.
       {
-        keys: ["W", "A", "D"],
-        anyOrder: true,
+        keys: [["W", "A", "D"]],
         action: {
           type: "lstick",
           ...angles[0],
         },
       },
       {
-        keys: ["SPACE", "A", "D"],
-        anyOrder: true,
+        keys: [["SPACE", "A", "D"]],
         action: {
           type: "lstick",
           ...angles[0],
         },
       },
       {
-        keys: ["S", "D", "A"],
-        anyOrder: true,
+        keys: [["S", "D", "A"]],
         action: {
           type: "lstick",
           ...angles[180],
@@ -693,48 +644,42 @@ const allProfiles = [
       ///////////////////////////////
       // 45s
       {
-        keys: ["W", "A"],
-        anyOrder: true,
+        keys: [["W", "A"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["W", "D"],
-        anyOrder: true,
+        keys: [["W", "D"]],
         action: {
           type: "lstick",
           ...angles[45],
         },
       },
       {
-        keys: ["SPACE", "A"],
-        anyOrder: true,
+        keys: [["SPACE", "A"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["SPACE", "D"],
-        anyOrder: true,
+        keys: [["SPACE", "D"]],
         action: {
           type: "lstick",
           ...angles[45],
         },
       },
       {
-        keys: ["S", "A"],
-        anyOrder: true,
+        keys: [["S", "A"]],
         action: {
           type: "lstick",
           ...angles[225],
         },
       },
       {
-        keys: ["S", "D"],
-        anyOrder: true,
+        keys: [["S", "D"]],
         action: {
           type: "lstick",
           ...angles[135],
@@ -743,64 +688,56 @@ const allProfiles = [
 
       // How we want 45 degree up-downs to override
       {
-        keys: ["S", "A", "W"],
-        anyOrderModifier: true,
+        keys: [["S", "A"], ["W"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["S", "D", "W"],
-        anyOrderModifier: true,
+        keys: [["S", "D"], ["W"]],
         action: {
           type: "lstick",
           ...angles[45],
         },
       },
       {
-        keys: ["S", "A", "SPACE"],
-        anyOrderModifier: true,
+        keys: [["S", "A"], ["SPACE"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["S", "D", "SPACE"],
-        anyOrderModifier: true,
+        keys: [["S", "D"], ["SPACE"]],
         action: {
           type: "lstick",
           ...angles[45],
         },
       },
       {
-        keys: ["SPACE", "A", "S"],
-        anyOrderModifier: true,
+        keys: [["SPACE", "A"], ["S"]],
         action: {
           type: "lstick",
           ...angles[225],
         },
       },
       {
-        keys: ["SPACE", "D", "S"],
-        anyOrderModifier: true,
+        keys: [["SPACE", "D"], ["S"]],
         action: {
           type: "lstick",
           ...angles[135],
         },
       },
       {
-        keys: ["SPACE", "A", "S"],
-        anyOrderModifier: true,
+        keys: [["SPACE", "A"], ["S"]],
         action: {
           type: "lstick",
           ...angles[225],
         },
       },
       {
-        keys: ["SPACE", "D", "S"],
-        anyOrderModifier: true,
+        keys: [["SPACE", "D"], ["S"]],
         action: {
           type: "lstick",
           ...angles[135],
@@ -809,7 +746,7 @@ const allProfiles = [
 
       // An actual button:
       {
-        keys: ["LEFTSHIFT"],
+        keys: [["LEFTSHIFT"]],
         action: {
           type: "button",
           button: "LCLICK",
@@ -823,77 +760,77 @@ const allProfiles = [
       //////////////////////////////////////////////////////////////////////////
       // MAIN BUTTONS
       {
-        keys: ["KP4"],
+        keys: [["KP4"]],
         action: {
           type: "button",
           button: "B",
         },
       },
       {
-        keys: ["KP5"],
+        keys: [["KP5"]],
         action: {
           type: "button",
           button: "A",
         },
       },
       {
-        keys: ["KP6"],
+        keys: [["KP6"]],
         action: {
           type: "button",
           button: "Y",
         },
       },
       {
-        keys: ["KPPLUS"],
+        keys: [["KPPLUS"]],
         action: {
           type: "button",
           button: "X",
         },
       },
       {
-        keys: ["KPENTER"],
+        keys: [["KPENTER"]],
         action: {
           type: "button",
           button: "X",
         },
       },
       {
-        keys: ["KP7"],
+        keys: [["KP7"]],
         action: {
           type: "button",
           button: "L",
         },
       },
       {
-        keys: ["KP8"],
+        keys: [["KP8"]],
         action: {
           type: "button",
           button: "R",
         },
       },
       {
-        keys: ["KP1"],
+        keys: [["KP1"]],
         action: {
           type: "button",
           button: "ZL",
         },
       },
       {
-        keys: ["KP2"],
+        keys: [["KP2"]],
         action: {
           type: "button",
           button: "ZR",
         },
       },
       {
-        keys: ["RIGHT"],
+        keys: [["RIGHT"]],
         action: {
           type: "button",
           button: "RCLICK",
         },
       },
       {
-        keys: ["DOWN"],
+        keys: [["DOWN"]],
         action: {
           type: "button",
           button: "RCLICK",
@@ -909,14 +846,14 @@ const allProfiles = [
       // WORKAROUND FOR A BUG! When D -> A is pressed, A action should happen BUT
       // Because D -> A -> W exists, it lands on that "A" which doesn't have an action.
       {
-        keys: ["A", "D"],
+        keys: [["A", "D"]],
         action: {
           type: "lstick",
           ...angles[90],
         },
       },
       {
-        keys: ["D", "A"],
+        keys: [["D", "A"]],
         action: {
           type: "lstick",
           ...angles[270],
@@ -925,16 +862,14 @@ const allProfiles = [
 
       // We want straight up or down when left, right, and up/down are pressed.
       {
-        keys: ["W", "A", "D"],
-        anyOrder: true,
+        keys: [["W", "A", "D"]],
         action: {
           type: "lstick",
           ...angles[0],
         },
       },
       {
-        keys: ["S", "D", "A"],
-        anyOrder: true,
+        keys: [["S", "D", "A"]],
         action: {
           type: "lstick",
           ...angles[180],
@@ -944,32 +879,28 @@ const allProfiles = [
       ///////////////////////////////
       // 45s
       {
-        keys: ["W", "A"],
-        anyOrder: true,
+        keys: [["W", "A"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["W", "D"],
-        anyOrder: true,
+        keys: [["W", "D"]],
         action: {
           type: "lstick",
           ...angles[45],
         },
       },
       {
-        keys: ["S", "A"],
-        anyOrder: true,
+        keys: [["S", "A"]],
         action: {
           type: "lstick",
           ...angles[225],
         },
       },
       {
-        keys: ["S", "D"],
-        anyOrder: true,
+        keys: [["S", "D"]],
         action: {
           type: "lstick",
           ...angles[135],
@@ -978,16 +909,14 @@ const allProfiles = [
 
       // How we want 45 degree up-downs to override
       {
-        keys: ["S", "A", "W"],
-        anyOrderModifier: true,
+        keys: [["S", "A"], ["W"]],
         action: {
           type: "lstick",
           ...angles[315],
         },
       },
       {
-        keys: ["S", "D", "W"],
-        anyOrderModifier: true,
+        keys: [["S", "D"], ["W"]],
         action: {
           type: "lstick",
           ...angles[45],
@@ -1001,32 +930,28 @@ const allProfiles = [
       //////////////////////////////////////////////////////////////////////////
       // 90s
       {
-        keys: ["LEFTSHIFT", "W"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W"]],
         action: {
           type: "lstick",
           ...anglesSlower[0],
         },
       },
       {
-        keys: ["LEFTSHIFT", "A"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "A"]],
         action: {
           type: "lstick",
           ...anglesSlower[270],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S"]],
         action: {
           type: "lstick",
           ...anglesSlower[180],
         },
       },
       {
-        keys: ["LEFTSHIFT", "D"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "D"]],
         action: {
           type: "lstick",
           ...anglesSlower[90],
@@ -1034,32 +959,28 @@ const allProfiles = [
       },
       // 45s
       {
-        keys: ["LEFTSHIFT", "W", "A"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "A"]],
         action: {
           type: "lstick",
           ...anglesSlower[315],
         },
       },
       {
-        keys: ["LEFTSHIFT", "W", "D"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "W", "D"]],
         action: {
           type: "lstick",
           ...anglesSlower[45],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "A"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "A"]],
         action: {
           type: "lstick",
           ...anglesSlower[225],
         },
       },
       {
-        keys: ["LEFTSHIFT", "S", "D"],
-        anyOrder: true,
+        keys: [["LEFTSHIFT", "S", "D"]],
         action: {
           type: "lstick",
           ...anglesSlower[135],
@@ -1068,16 +989,14 @@ const allProfiles = [
 
       // Shift -> A -> D goes full right, not half right. Need to override
       {
-        keys: ["LEFTSHIFT", "A", "D"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "A"], ["D"]],
         action: {
           type: "lstick",
           ...anglesSlower[90],
         },
       },
       {
-        keys: ["LEFTSHIFT", "D", "A"],
-        anyOrderModifier: true,
+        keys: [["LEFTSHIFT", "D"], ["A"]],
         action: {
           type: "lstick",
           ...anglesSlower[270],
@@ -1091,14 +1010,14 @@ const allProfiles = [
       //////////////////////////////////////////////////////////////////////////
       // LEFT
       {
-        keys: ["KP7"],
+        keys: [["KP7"]],
         action: {
           type: "rstick",
           ...angles[270],
         },
       },
       {
-        keys: ["KP1"],
+        keys: [["KP1"]],
         action: {
           type: "rstick",
           ...angles[270],
@@ -1106,14 +1025,14 @@ const allProfiles = [
       },
       // RIGHT
       {
-        keys: ["KP9"],
+        keys: [["KP9"]],
         action: {
           type: "rstick",
           ...angles[90],
         },
       },
       {
-        keys: ["KP3"],
+        keys: [["KP3"]],
         action: {
           type: "rstick",
           ...angles[90],
@@ -1121,7 +1040,7 @@ const allProfiles = [
       },
       // UP
       {
-        keys: ["KP8"],
+        keys: [["KP8"]],
         action: {
           type: "rstick",
           ...angles[0],
@@ -1129,7 +1048,7 @@ const allProfiles = [
       },
       // DOWN
       {
-        keys: ["KP2"],
+        keys: [["KP2"]],
         action: {
           type: "rstick",
           ...angles[180],
@@ -1140,8 +1059,7 @@ const allProfiles = [
       // // Angled Tilts
       // // RIGHT-UP
       // {
-      //   keys: ["W", "KP9"],
-      //   anyOrder: true,
+      //  [ keys: [["W", "KP9"]]],
       //   action: {
       //     type: "rstick",
       //     ...angles[60],
@@ -1149,8 +1067,7 @@ const allProfiles = [
       // },
       // // LEFT-UP
       // {
-      //   keys: ["W", "KP7"],
-      //   anyOrder: true,
+      //  [ keys: [["W", "KP7"]]],
       //   action: {
       //     type: "rstick",
       //     ...angles[300],
@@ -1158,8 +1075,7 @@ const allProfiles = [
       // },
       // // RIGHT-DOWN
       // {
-      //   keys: ["S", "KP3"],
-      //   anyOrder: true,
+      //  [ keys: [["S", "KP3"]]],
       //   action: {
       //     type: "rstick",
       //     ...angles[120],
@@ -1167,8 +1083,7 @@ const allProfiles = [
       // },
       // // LEFT-DOWN
       // {
-      //   keys: ["S", "KP1"],
-      //   anyOrder: true,
+      //  [ keys: [["S", "KP1"]]],
       //   action: {
       //     type: "rstick",
       //     ...angles[240],
@@ -1177,49 +1092,49 @@ const allProfiles = [
 
       // MAIN BUTTONS
       {
-        keys: ["KP4"],
+        keys: [["KP4"]],
         action: {
           type: "button",
           button: "A",
         },
       },
       {
-        keys: ["KP5"],
+        keys: [["KP5"]],
         action: {
           type: "button",
           button: "B",
         },
       },
       {
-        keys: ["KP6"],
+        keys: [["KP6"]],
         action: {
           type: "button",
           button: "R",
         },
       },
       {
-        keys: ["KPPLUS"],
+        keys: [["KPPLUS"]],
         action: {
           type: "button",
           button: "ZR",
         },
       },
       {
-        keys: ["KPENTER"],
+        keys: [["KPENTER"]],
         action: {
           type: "button",
           button: "ZL",
         },
       },
       {
-        keys: ["SPACE"],
+        keys: [["SPACE"]],
         action: {
           type: "button",
           button: "Y",
         },
       },
       {
-        keys: ["RIGHT"],
+        keys: [["RIGHT"]],
         action: {
           type: "button",
           button: "X",
@@ -1354,24 +1269,7 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
   };
 
   // Create an array of arrays of all possible combinations.
-  if (mapping.anyOrder) {
-    allPossibleKeyOrders = generateAllPossibleArrays(mapping.keys);
-  } else if (mapping.anyOrderModifier) {
-    // Grab all the "modifier" keys (every key except the last one)
-    const modifierKeys = mapping.keys.slice(0, -1);
-    const lastKey = mapping.keys[mapping.keys.length - 1];
-    // Get all possible modifier combinations
-    allPossibleKeyOrders = generateAllPossibleArrays(modifierKeys);
-    // Push the last key onto all possible modifier combinations.
-    allPossibleKeyOrders = allPossibleKeyOrders.map((arr) => {
-      arr.push(lastKey);
-      return arr;
-    });
-  } else {
-    // If we're dealing with just a specific order, wrap it in an array
-    // so below logic carriers over.
-    allPossibleKeyOrders = [mapping.keys];
-  }
+  allPossibleKeyOrders = generateAllPossibleArrays(mapping.keys);
 
   allPossibleKeyOrders.forEach((mappingKeyCombo) => {
     buildTree(mappingKeyCombo, mapping, hardwareConfigs, 0);
