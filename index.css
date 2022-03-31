@@ -38,6 +38,10 @@
   margin-bottom: 12px;
 }
 
+.output.big * {
+  font-size: 24px;
+}
+
 .delete-mapping {
   visibility: hidden;
 }
