@@ -6,9 +6,12 @@ import {
   DPad,
   actionOrders,
   actionSortOrder,
+  keyEventCodeToC,
 } from "./enums.js";
 import { SavedMappings } from "./components/SavedMappings.js";
+import { testing } from "./index.js";
 
+const buildConfigEl = document.getElementById("build-config");
 const key1TextEl = document.getElementById("key-1-text");
 const key2TextEl = document.getElementById("key-2-text");
 const key3TextEl = document.getElementById("key-3-text");
@@ -152,8 +155,8 @@ const keysDownToElements = () => {
   keysDown.forEach((key, idx) => {
     if (idx >= keyTextEls.length) return;
 
-    const keyName = key.replace("Key", "");
-    keyTextEls[idx].textContent = keyName;
+    const keyHumanFriendlyName = keyEventCodeToC[key];
+    keyTextEls[idx].textContent = keyHumanFriendlyName;
   });
 
   // TODO: Hide extra elements after setting text.
@@ -259,6 +262,16 @@ const stopDefaultAndPropogation = (evt) => {
 document.querySelectorAll("input, select, option").forEach((inputEl) => {
   inputEl.addEventListener("keydown", stopDefaultAndPropogation);
   inputEl.addEventListener("keyup", stopDefaultAndPropogation);
+});
+
+buildConfigEl.addEventListener("click", (evt) => {
+  // Only one profile for now
+  testing([
+    {
+      version: "1.0.0",
+      configs: mappings,
+    },
+  ]);
 });
 
 watchActionInputs();

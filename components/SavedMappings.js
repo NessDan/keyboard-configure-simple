@@ -1,8 +1,12 @@
 import { actionsToStrings, LStick, RStick, Button, DPad } from "../enums.js";
+import { keyEventCodeToC } from "../enums.js";
 
 export const SavedMappings = (idx, mapping) => {
   const flattenedKeys = mapping.keys.map((keyGroup) => {
-    return keyGroup.join(" ⇿ ");
+    const keyGroupHumanFriendly = keyGroup.map((group) => {
+      return keyEventCodeToC[group];
+    });
+    return keyGroupHumanFriendly.join(" ⇿ ");
   });
   const stringifiedKeys = flattenedKeys.join(" ⇾ ");
   const keyString = `${stringifiedKeys}`;
