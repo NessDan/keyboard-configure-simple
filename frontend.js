@@ -12,20 +12,24 @@ import { SavedMappings } from "./components/SavedMappings.js";
 import { testing } from "./index.js";
 
 const buildConfigEl = document.getElementById("build-config");
-const key1TextEl = document.getElementById("key-1-text");
-const key2TextEl = document.getElementById("key-2-text");
-const key3TextEl = document.getElementById("key-3-text");
-const key4TextEl = document.getElementById("key-4-text");
-const keyTextEls = [key1TextEl, key2TextEl, key3TextEl, key4TextEl];
-const key1GroupEl = document.getElementById("key-1-group");
-const key2GroupEl = document.getElementById("key-2-group");
-const key3GroupEl = document.getElementById("key-3-group");
-const key4GroupEl = document.getElementById("key-4-group");
-const keyGroupEls = [key1GroupEl, key2GroupEl, key3GroupEl, key4GroupEl];
-const orderBtn1El = document.getElementById("order-1");
-const orderBtn2El = document.getElementById("order-2");
-const orderBtn3El = document.getElementById("order-3");
-const orderBtnEls = [orderBtn1El, orderBtn2El, orderBtn3El];
+const deleteConfigEl = document.getElementById("delete-config");
+const keyTextEls = [
+  document.getElementById("key-1-text"),
+  document.getElementById("key-2-text"),
+  document.getElementById("key-3-text"),
+  document.getElementById("key-4-text"),
+];
+const keyGroupEls = [
+  document.getElementById("key-1-group"),
+  document.getElementById("key-2-group"),
+  document.getElementById("key-3-group"),
+  document.getElementById("key-4-group"),
+];
+const orderBtnEls = [
+  document.getElementById("order-1"),
+  document.getElementById("order-2"),
+  document.getElementById("order-3"),
+];
 const savedMappingsLStickEl = document.getElementById("saved-mappings-lstick");
 const savedMappingsRStickEl = document.getElementById("saved-mappings-rstick");
 const savedMappingsButtonEl = document.getElementById("saved-mappings-button");
@@ -45,6 +49,22 @@ const stickDistanceEl = document.getElementById("stick-distance");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
 const buttonSelectEl = document.getElementById("button-select");
 
+const loadFromLocalStorage = () => {
+  try {
+    const fullMappingStructureAsString = localStorage.getItem("mappings");
+    const fullMappingStructure = fullMappingStructureAsString
+      ? JSON.parse(fullMappingStructureAsString)
+      : null;
+
+    if (fullMappingStructure) {
+      return fullMappingStructure[0].configs;
+    }
+  } catch (e) {
+    console.error("Couldn't load config, error with mapping :(", e);
+    return null;
+  }
+};
+
 // Globals
 let activeActionType = LStick;
 let selectedAngle = 0;
@@ -52,7 +72,7 @@ let stickDistance = 100;
 let selectedButton = "Y";
 let numKeysDown = 0;
 let keysDown = [];
-let mappings = [];
+let mappings = loadFromLocalStorage() ?? [];
 
 document.addEventListener("keydown", (evt) => {
   // If someone is holding the key down, we don't want to reprocess.
@@ -210,6 +230,14 @@ const hideUnsetKeyGroups = () => {
 
 hideUnsetKeyGroups();
 
+const saveToLocalStorage = (mappings) => {
+  localStorage.setItem("mappings", JSON.stringify(mappings));
+};
+
+const deleteFromLocalStorage = (mappings) => {
+  localStorage.removeItem("mappings");
+};
+
 orderBtnEls.forEach((orderBtnEl) => {
   orderBtnEl.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -264,14 +292,35 @@ document.querySelectorAll("input, select, option").forEach((inputEl) => {
   inputEl.addEventListener("keyup", stopDefaultAndPropogation);
 });
 
+deleteConfigEl.addEventListener("click", (evt) => {
+  const wantsToDelete = confirm(
+    "You sure you want to delete the config from your browser storage?"
+  );
+
+  wantsToDelete ? deleteFromLocalStorage() : null;
+
+  window.location.reload();
+});
+
 buildConfigEl.addEventListener("click", (evt) => {
-  // Only one profile for now
-  testing([
+  const fullMappingStructure = [
     {
       version: "1.0.0",
       configs: mappings,
     },
-  ]);
+  ];
+
+  saveToLocalStorage(fullMappingStructure);
+  // Only one profile for now
+  try {
+    testing(fullMappingStructure);
+  } catch (e) {
+    alert(
+      "Sorry, there's a race condition error. Try refreshing the page and rebuilding."
+    );
+    console.error("Uh oh spaghettios", e);
+  }
 });
 
+renderMappingsOnPage(); // In case we loaded some mappings
 watchActionInputs();
