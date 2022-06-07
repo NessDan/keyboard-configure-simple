@@ -1,5 +1,5 @@
-import { actionsToStrings, LStick, RStick, Button, DPad } from "../enums.js";
-import { keyEventCodeToC } from "../enums.js";
+import { actionsToStrings, LStick, RStick, Button, DPad } from "../constants/enums.js";
+import { keyEventCodeToC } from "../constants/enums.js";
 
 export const SavedMappings = (idx, mapping) => {
   const flattenedKeys = mapping.keys.map((keyGroup) => {

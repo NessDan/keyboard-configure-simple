@@ -1,4 +1,4 @@
-import { keyEventCodeToC } from "./enums.js";
+import { keyEventCodeToC } from "./constants/enums.js";
 
 const angles = {
   0: { x: 128, y: 0 },

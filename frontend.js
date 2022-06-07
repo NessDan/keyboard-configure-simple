@@ -1,4 +1,4 @@
-import angles from "./angles.js";
+import angles from "./constants/angles.js";
 import {
   LStick,
   RStick,
@@ -7,7 +7,7 @@ import {
   actionOrders,
   actionSortOrder,
   keyEventCodeToC,
-} from "./enums.js";
+} from "./constants/enums.js";
 import { SavedMappings } from "./components/SavedMappings.js";
 import { testing } from "./index.js";
 
