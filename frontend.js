@@ -13,6 +13,7 @@ import { mappingsToBinary } from "./index.js";
 
 const buildConfigEl = document.getElementById("build-config");
 const deleteConfigEl = document.getElementById("delete-config");
+const saveConfigToDiskEl = document.getElementById("save-to-file");
 const keyTextEls = [
   document.getElementById("key-1-text"),
   document.getElementById("key-2-text"),
@@ -73,6 +74,17 @@ const mappingsToFullMappingStructure = (mappings) => {
     },
   ];
 };
+
+// https://stackoverflow.com/a/34156339/231730
+function download(content, fileName, contentType) {
+  var a = document.createElement("a");
+  var file = new Blob([content], {type: contentType});
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+}
+
+
 // Globals
 let activeActionType = LStick;
 let selectedAngle = 0;
@@ -165,6 +177,7 @@ addMappingEl.addEventListener("click", (evt) => {
 
   // Clear the keys so they don't accidentally re-add their mapping
   keysDown = [];
+  saveToLocalStorage(mappingsToFullMappingStructure(mappings));
   keysDownToElements();
   hideUnsetKeyGroups();
   renderMappingsOnPage();
@@ -298,6 +311,26 @@ const stopDefaultAndPropogation = (evt) => {
 document.querySelectorAll("input, select, option").forEach((inputEl) => {
   inputEl.addEventListener("keydown", stopDefaultAndPropogation);
   inputEl.addEventListener("keyup", stopDefaultAndPropogation);
+});
+
+saveConfigToDiskEl.addEventListener("click", (evt) => {
+  evt.preventDefault();
+
+  const mappingsToDownload = mappingsToFullMappingStructure(mappings);
+
+  const fileName = prompt("Enter a file name to save the config to:");
+  if (fileName) {
+    download(JSON.stringify(mappingsToDownload), fileName + ".keyboardgg.json", "application/json");
+  } else {
+    const date = new Date();
+    const fileNameDate = [date.getMonth()+1,
+      date.getDate(),
+      date.getFullYear()].join('-')+' '+
+     [date.getHours(),
+      date.getMinutes(),
+      date.getSeconds()].join('-');
+    download(JSON.stringify(mappingsToDownload), fileNameDate.toLocaleString() + ".keyboardgg.json", "application/json");
+  }
 });
 
 deleteConfigEl.addEventListener("click", (evt) => {
