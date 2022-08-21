@@ -1413,7 +1413,12 @@ const convertWebActionToHardwareAction = (action) => {
         type: "BOOLEAN",
         value: true,
       };
-      break;
+    case "dpad":
+      return {
+        key: "DPAD",
+        type: "UINT8",
+        value: action.dpad,
+      };
     default:
       break;
   }

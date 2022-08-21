@@ -32,6 +32,16 @@ export const BtnCapture = "CAPTURE";
 export const BtnLClick = "LCLICK";
 export const BtnRClick = "RCLICK";
 
+// export const DPadCenter = 8;
+// export const DPadUp = 0;
+// export const DPadUpRight = 1;
+// export const DPadRight = 2;
+// export const DPadDownRight = 3;
+// export const DPadDown = 4;
+// export const DPadDownLeft = 5;
+// export const DPadLeft = 6;
+// export const DPadUpLeft = 7;
+
 export const keyEventCodeToC = {
   KeyA: "A",
   KeyB: "B",

@@ -48,6 +48,7 @@ const actionTypeEl = document.getElementById("action-type-select");
 const angleSelectEl = document.getElementById("angle-select");
 const stickDistanceEl = document.getElementById("stick-distance");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
+const dpadSelectEl = document.getElementById("dpad-direction-select");
 const buttonSelectEl = document.getElementById("button-select");
 
 const loadFromLocalStorage = () => {
@@ -90,6 +91,7 @@ let activeActionType = LStick;
 let selectedAngle = 0;
 let stickDistance = 100;
 let selectedButton = "Y";
+let selectedDpad = 0;
 let numKeysDown = 0;
 let keysDown = [];
 window.mappings = loadFromLocalStorage() ?? [];
@@ -167,6 +169,9 @@ addMappingEl.addEventListener("click", (evt) => {
       break;
     case Button:
       mappingToPush.action.button = selectedButton;
+      break;
+    case DPad:
+      mappingToPush.action.dpad = Number(selectedDpad);
       break;
   }
 
@@ -278,10 +283,17 @@ const watchActionInputs = () => {
       case LStick:
       case RStick:
         angleSelectWrapperEl.classList.remove("hidden");
+        dpadSelectEl.classList.add("hidden");
         buttonSelectEl.classList.add("hidden");
         break;
       case Button:
         buttonSelectEl.classList.remove("hidden");
+        dpadSelectEl.classList.add("hidden");
+        angleSelectWrapperEl.classList.add("hidden");
+        break;
+      case DPad:
+        dpadSelectEl.classList.remove("hidden");
+        buttonSelectEl.classList.add("hidden");
         angleSelectWrapperEl.classList.add("hidden");
         break;
     }
@@ -302,6 +314,10 @@ stickDistanceEl.addEventListener("change", (evt) => {
 
 buttonSelectEl.addEventListener("change", (evt) => {
   selectedButton = buttonSelectEl.value;
+});
+
+dpadSelectEl.addEventListener("change", (evt) => {
+  selectedDpad = dpadSelectEl.value;
 });
 
 const stopDefaultAndPropogation = (evt) => {
