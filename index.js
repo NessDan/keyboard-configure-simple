@@ -1419,9 +1419,7 @@ const convertWebActionToHardwareAction = (action) => {
   }
 };
 
-let buildEdgeguardConfigBlob;
-
-export const testing = (mappings) => {
+export const mappingsToBinary = (mappings) => {
   mappings.forEach((profile) => {
     profile.configs.forEach((mapping) => {
       generateHardwareConfig(hardwareConfigs, mapping);
@@ -1433,7 +1431,7 @@ export const testing = (mappings) => {
     };
     console.log(hardwareProfile);
 
-    buildEdgeguardConfigBlob(JSON.stringify(hardwareProfile));
+    window.buildEdgeguardConfigBlob(JSON.stringify(hardwareProfile));
 
     console.log(dataBlob);
     hardwareConfigs = [];
@@ -1441,6 +1439,6 @@ export const testing = (mappings) => {
 };
 
 Module.onRuntimeInitialized = () => {
-  buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, ["string"]);
-  // testing(allProfiles);
+  window.buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, ["string"]);
+  // mappingsToBinary(allProfiles);
 };

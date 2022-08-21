@@ -9,7 +9,7 @@ import {
   keyEventCodeToC,
 } from "./constants/enums.js";
 import { SavedMappings } from "./components/SavedMappings.js";
-import { testing } from "./index.js";
+import { mappingsToBinary } from "./index.js";
 
 const buildConfigEl = document.getElementById("build-config");
 const deleteConfigEl = document.getElementById("delete-config");
@@ -65,6 +65,14 @@ const loadFromLocalStorage = () => {
   }
 };
 
+const mappingsToFullMappingStructure = (mappings) => {
+  return [
+    {
+      version: "1.0.0",
+      configs: mappings,
+    },
+  ];
+};
 // Globals
 let activeActionType = LStick;
 let selectedAngle = 0;
@@ -72,7 +80,7 @@ let stickDistance = 100;
 let selectedButton = "Y";
 let numKeysDown = 0;
 let keysDown = [];
-let mappings = loadFromLocalStorage() ?? [];
+window.mappings = loadFromLocalStorage() ?? [];
 
 document.addEventListener("keydown", (evt) => {
   // If someone is holding the key down, we don't want to reprocess.
@@ -303,17 +311,9 @@ deleteConfigEl.addEventListener("click", (evt) => {
 });
 
 buildConfigEl.addEventListener("click", (evt) => {
-  const fullMappingStructure = [
-    {
-      version: "1.0.0",
-      configs: mappings,
-    },
-  ];
-
-  saveToLocalStorage(fullMappingStructure);
   // Only one profile for now
   try {
-    testing(fullMappingStructure);
+    mappingsToBinary(mappingsToFullMappingStructure(mappings));
   } catch (e) {
     alert(
       "Sorry, there's a race condition error. Try refreshing the page and rebuilding."

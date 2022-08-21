@@ -2,7 +2,19 @@
 <html>
   <head>
     <title>keyboard.gg - Configuration Tool</title>
+    <meta charset="utf-8">
 
+    <script type="text/javascript">
+      // Sets up the WASM printf to be captured properly
+      let dataBlob;
+      var Module = {
+        preRun: [],
+        postRun: [],
+        print: function (printOutput) {
+          dataBlob = printOutput.split(",");
+        },
+      };
+    </script>
     <link rel="stylesheet" href="index.css" />
   </head>
 
@@ -108,19 +120,7 @@
     <button id="delete-config">Delete Saved Config &amp; Refresh</button>
 
     <script type="module" src="frontend.js"></script>
-
-    <script type="text/javascript">
-      // Sets up the WASM printf to be captured properly
-      let dataBlob;
-      var Module = {
-        preRun: [],
-        postRun: [],
-        print: function (printOutput) {
-          dataBlob = printOutput.split(",");
-        },
-      };
-    </script>
     <script type="module" src="index.js"></script>
-    <script async type="text/javascript" src="generator/config-generator.js"></script>
+    <script type="text/javascript" src="generator/config-generator.js"></script>
   </body>
 </html>
