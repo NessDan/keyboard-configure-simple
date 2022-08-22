@@ -1326,9 +1326,7 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
     const lastKey = orderedKeys.length === 1;
     // Go through the hardware config, see if we have already made a
     // mapping for the key we're searching through.
-    let matchedMappingIdx = hardwareConfigs.findIndex((hardwareConfig) => {
-      return hardwareConfig.key == keyWeCareAbout;
-    });
+    let matchedMappingIdx = hardwareConfigs.findIndex((hardwareConfig) =>  hardwareConfig.key == actualKeyName);
     let matchedMapping;
 
     // We didn't find the mapping so we make our own!
