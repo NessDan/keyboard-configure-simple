@@ -1,4 +1,6 @@
 import { keyEventCodeToC } from "./constants/enums.js";
+import angleToPoint from "./constants/angles.js";
+import { connectAndSendDataToAdapter } from "./sendToDevice.js";
 
 const angles = {
   0: { x: 128, y: 0 },
@@ -1385,25 +1387,28 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
   });
 };
 
+const angleDistanceConverter  = (angle, distance) => {
+  // Takes an angle in degrees (e.g. 0, 90, 180, 270) and a distance (0 - 100) and
+  // returns the x and y values of the controller stick.
+  const x = Math.round((angleToPoint[angle].x * distance) / 100) + 128;
+  const y = Math.round((angleToPoint[angle].y * distance) / 100) + 128;
+
+  return {x, y};
+};
+
 const convertWebActionToHardwareAction = (action) => {
   switch (action.type) {
     case "lstick":
       return {
         key: "LANALOG",
         type: "ABSCOORDS",
-        value: {
-          x: angles[action.angle].x,
-          y: angles[action.angle].y,
-        },
+        value: angleDistanceConverter(action.angle, action.stickDistance),
       };
     case "rstick":
       return {
         key: "RANALOG",
         type: "ABSCOORDS",
-        value: {
-          x: angles[action.angle].x,
-          y: angles[action.angle].y,
-        },
+        value: angleDistanceConverter(action.angle, action.stickDistance),
       };
     case "button":
       return {
@@ -1423,6 +1428,7 @@ const convertWebActionToHardwareAction = (action) => {
 };
 
 export const mappingsToBinary = (mappings) => {
+  console.log("mappingsToBinary", mappings);
   mappings.forEach((profile) => {
     profile.configs.forEach((mapping) => {
       generateHardwareConfig(hardwareConfigs, mapping);
@@ -1432,11 +1438,16 @@ export const mappingsToBinary = (mappings) => {
       ...profile,
       configs: hardwareConfigs,
     };
-    console.log(hardwareProfile);
+    console.log("hardwareProfile", hardwareProfile);
 
     window.buildEdgeguardConfigBlob(JSON.stringify(hardwareProfile));
 
-    console.log(dataBlob);
+    const dataToFlash = dataBlob.map((strByte) => Number(strByte))
+
+    console.log("dataBlob", dataToFlash);
+
+    connectAndSendDataToAdapter(dataToFlash);
+
     hardwareConfigs = [];
   });
 };

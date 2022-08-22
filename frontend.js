@@ -11,7 +11,7 @@ import {
 import { SavedMappings } from "./components/SavedMappings.js";
 import { mappingsToBinary } from "./index.js";
 
-const buildConfigEl = document.getElementById("build-config");
+const deployConfigEl = document.getElementById("deploy-config");
 const deleteConfigEl = document.getElementById("delete-config");
 const saveConfigToDiskEl = document.getElementById("save-to-file");
 const keyTextEls = [
@@ -359,15 +359,18 @@ deleteConfigEl.addEventListener("click", (evt) => {
   window.location.reload();
 });
 
-buildConfigEl.addEventListener("click", (evt) => {
+deployConfigEl.addEventListener("click", (evt) => {
   // Only one profile for now
   try {
     mappingsToBinary(mappingsToFullMappingStructure(mappings));
   } catch (e) {
-    alert(
-      "Sorry, there's a race condition error. Try refreshing the page and rebuilding."
-    );
-    console.error("Uh oh spaghettios", e);
+    if (e.message.includes("buildEdgeguard") && e.message.includes("is not a function")){
+      alert("Sorry, there's a race condition error. Try refreshing the page and rebuilding.");
+    } else {
+      alert("A new error has occurred, please let NessDan know!");
+      alert(e.message);
+    }
+    console.error(e);
   }
 });
 
