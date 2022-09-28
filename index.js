@@ -1328,7 +1328,9 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
     const lastKey = orderedKeys.length === 1;
     // Go through the hardware config, see if we have already made a
     // mapping for the key we're searching through.
-    let matchedMappingIdx = hardwareConfigs.findIndex((hardwareConfig) =>  hardwareConfig.key == actualKeyName);
+    let matchedMappingIdx = hardwareConfigs.findIndex(
+      (hardwareConfig) => hardwareConfig.key == actualKeyName
+    );
     let matchedMapping;
 
     // We didn't find the mapping so we make our own!
@@ -1387,13 +1389,13 @@ const generateHardwareConfig = (hardwareConfigs, mapping) => {
   });
 };
 
-const angleDistanceConverter  = (angle, distance) => {
+const angleDistanceConverter = (angle, distance) => {
   // Takes an angle in degrees (e.g. 0, 90, 180, 270) and a distance (0 - 100) and
   // returns the x and y values of the controller stick.
   const x = Math.round((angleToPoint[angle].x * distance) / 100) + 128;
   const y = Math.round((angleToPoint[angle].y * distance) / 100) + 128;
 
-  return {x, y};
+  return { x, y };
 };
 
 const convertWebActionToHardwareAction = (action) => {
@@ -1442,7 +1444,7 @@ export const mappingsToBinary = (mappings) => {
 
     window.buildEdgeguardConfigBlob(JSON.stringify(hardwareProfile));
 
-    const dataToFlash = dataBlob.map((strByte) => Number(strByte))
+    const dataToFlash = dataBlob.map((strByte) => Number(strByte));
 
     console.log("dataBlob", dataToFlash);
 
