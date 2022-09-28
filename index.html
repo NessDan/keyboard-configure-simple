@@ -7,12 +7,14 @@
     <script type="text/javascript">
       // Sets up the WASM printf to be captured properly
       let dataBlob;
-      var Module = {
-        preRun: [],
-        postRun: [],
-        print: function (printOutput) {
-          dataBlob = printOutput.split(",");
-        },
+      var Module = typeof Module != 'undefined' ? Module : {};
+      Module.preRun = [];
+      Module.postRun = [];
+      Module.print = (printOutput) => {
+        dataBlob = printOutput.split(",");
+      };
+      Module.onRuntimeInitialized = () => {
+        window.buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, ["string"]);
       };
     </script>
     <link rel="stylesheet" href="index.css" />

@@ -1451,8 +1451,3 @@ export const mappingsToBinary = (mappings) => {
     hardwareConfigs = [];
   });
 };
-
-Module.onRuntimeInitialized = () => {
-  window.buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, ["string"]);
-  // mappingsToBinary(allProfiles);
-};
