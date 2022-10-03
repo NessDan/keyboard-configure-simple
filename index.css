@@ -10,19 +10,19 @@
 }
 
 .key {
-  height: 72px;
-  min-width: 72px;
-  padding: 16px;
-  font-size: 4em;
-  margin: 0 12px;
-  border: 24px inset #e3e3e3;
+  height: 36px;
+  min-width: 36px;
+  padding: 8px;
+  font-size: 2em;
+  margin: 0 6px;
+  border: 12px inset #e3e3e3;
   background: #eee;
 }
 
 .order-button {
-  font-size: 2.5em;
-  width: 64px;
-  height: 64px;
+  font-size: 1.5em;
+  width: 36px;
+  height: 36px;
 }
 
 .hidden {
