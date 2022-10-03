@@ -50,6 +50,7 @@ const stickDistanceEl = document.getElementById("stick-distance");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
 const dpadSelectEl = document.getElementById("dpad-direction-select");
 const buttonSelectEl = document.getElementById("button-select");
+const configSizeEl = document.getElementById("config-size");
 
 const loadFromLocalStorage = () => {
   try {
@@ -79,12 +80,11 @@ const mappingsToFullMappingStructure = (mappings) => {
 // https://stackoverflow.com/a/34156339/231730
 function download(content, fileName, contentType) {
   var a = document.createElement("a");
-  var file = new Blob([content], {type: contentType});
+  var file = new Blob([content], { type: contentType });
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   a.click();
 }
-
 
 // Globals
 let activeActionType = LStick;
@@ -194,6 +194,7 @@ window.deleteMapping = (ele) => {
   const idxToDelete = Number(ele.getAttribute("data-mappingidx"));
   mappings = mappings.filter((mapping, idx) => idx !== idxToDelete);
 
+  saveToLocalStorage(mappingsToFullMappingStructure(mappings));
   renderMappingsOnPage();
 };
 
@@ -336,16 +337,22 @@ saveConfigToDiskEl.addEventListener("click", (evt) => {
 
   const fileName = prompt("Enter a file name to save the config to:");
   if (fileName) {
-    download(JSON.stringify(mappingsToDownload), fileName + ".keyboardgg.json", "application/json");
+    download(
+      JSON.stringify(mappingsToDownload),
+      fileName + ".keyboardgg.json",
+      "application/json"
+    );
   } else {
     const date = new Date();
-    const fileNameDate = [date.getMonth()+1,
-      date.getDate(),
-      date.getFullYear()].join('-')+' '+
-     [date.getHours(),
-      date.getMinutes(),
-      date.getSeconds()].join('-');
-    download(JSON.stringify(mappingsToDownload), fileNameDate.toLocaleString() + ".keyboardgg.json", "application/json");
+    const fileNameDate =
+      [date.getMonth() + 1, date.getDate(), date.getFullYear()].join("-") +
+      " " +
+      [date.getHours(), date.getMinutes(), date.getSeconds()].join("-");
+    download(
+      JSON.stringify(mappingsToDownload),
+      fileNameDate.toLocaleString() + ".keyboardgg.json",
+      "application/json"
+    );
   }
 });
 
@@ -362,10 +369,19 @@ deleteConfigEl.addEventListener("click", (evt) => {
 deployConfigEl.addEventListener("click", (evt) => {
   // Only one profile for now
   try {
-    mappingsToBinary(mappingsToFullMappingStructure(mappings));
+    const sizeOfConfig = mappingsToBinary(
+      mappingsToFullMappingStructure(mappings)
+    );
+
+    configSizeEl.innerHTML = sizeOfConfig;
   } catch (e) {
-    if (e.message.includes("buildEdgeguard") && e.message.includes("is not a function")){
-      alert("Sorry, there's a race condition error. Try refreshing the page and rebuilding.");
+    if (
+      e.message.includes("buildEdgeguard") &&
+      e.message.includes("is not a function")
+    ) {
+      alert(
+        "Sorry, there's a race condition error. Try refreshing the page and rebuilding."
+      );
     } else {
       alert("A new error has occurred, please let NessDan know!");
       alert(e.message);

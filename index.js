@@ -1431,6 +1431,9 @@ const convertWebActionToHardwareAction = (action) => {
 
 export const mappingsToBinary = (mappings) => {
   console.log("mappingsToBinary", mappings);
+
+  let lastProfileSize = 0;
+
   mappings.forEach((profile) => {
     profile.configs.forEach((mapping) => {
       generateHardwareConfig(hardwareConfigs, mapping);
@@ -1451,5 +1454,9 @@ export const mappingsToBinary = (mappings) => {
     connectAndSendDataToAdapter(dataToFlash);
 
     hardwareConfigs = [];
+
+    lastProfileSize = dataToFlash.length;
   });
+
+  return lastProfileSize;
 };
