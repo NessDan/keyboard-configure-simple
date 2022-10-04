@@ -41,6 +41,8 @@ const savedMappingsEls = [
   savedMappingsButtonEl,
   savedMappingsDPadEl,
 ];
+const configSizeEl = document.getElementById("config-size");
+const loadConfigFromFileEl = document.getElementById("load-from-file");
 
 // Output Elements
 const addMappingEl = document.getElementById("add-mapping");
@@ -50,7 +52,6 @@ const stickDistanceEl = document.getElementById("stick-distance");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
 const dpadSelectEl = document.getElementById("dpad-direction-select");
 const buttonSelectEl = document.getElementById("button-select");
-const configSizeEl = document.getElementById("config-size");
 
 const loadFromLocalStorage = () => {
   try {
@@ -64,8 +65,15 @@ const loadFromLocalStorage = () => {
     }
   } catch (e) {
     console.error("Couldn't load config, error with mapping :(", e);
+    alert("Local storage config loading error! Please let NessDan know!");
     return null;
   }
+};
+
+const updateAndSaveMappings = (newMappings) => {
+  mappings = newMappings;
+  saveToLocalStorage(mappingsToFullMappingStructure(mappings));
+  renderMappingsOnPage();
 };
 
 const mappingsToFullMappingStructure = (mappings) => {
@@ -85,6 +93,42 @@ function download(content, fileName, contentType) {
   a.download = fileName;
   a.click();
 }
+
+// https://stackoverflow.com/a/26298948/231730
+function readSingleFile(evt) {
+  var file = evt.target.files[0];
+  if (!file) {
+    return;
+  }
+
+  // https://simon-schraeder.de/posts/filereader-async/
+  return new Promise((resolve, reject) => {
+    let reader = new FileReader();
+
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+
+    reader.onerror = reject;
+
+    reader.readAsText(file);
+  });
+}
+
+const checkAndSetMappingsConfigFile = async (evt) => {
+  try {
+    debugger;
+    let contents = await readSingleFile(evt);
+    contents = JSON.parse(contents);
+
+    if (contents[0].version === "1.0.0" && contents[0].configs.length > 0) {
+      updateAndSaveMappings(contents[0].configs);
+    }
+  } catch (err) {
+    console.error("Couldn't load config, error with mapping :(", err);
+    alert("Couldn't load config, error with mapping :( Contact NessDan!");
+  }
+};
 
 // Globals
 let activeActionType = LStick;
@@ -182,20 +226,18 @@ addMappingEl.addEventListener("click", (evt) => {
 
   // Clear the keys so they don't accidentally re-add their mapping
   keysDown = [];
-  saveToLocalStorage(mappingsToFullMappingStructure(mappings));
+  updateAndSaveMappings(mappings);
   keysDownToElements();
   hideUnsetKeyGroups();
-  renderMappingsOnPage();
 });
 
 // Have to set this to window so the SavedMapping component can call to it
 // https://medium.com/codex/global-variables-and-javascript-modules-ce674a869164
 window.deleteMapping = (ele) => {
   const idxToDelete = Number(ele.getAttribute("data-mappingidx"));
-  mappings = mappings.filter((mapping, idx) => idx !== idxToDelete);
+  const newMappings = mappings.filter((mapping, idx) => idx !== idxToDelete);
 
-  saveToLocalStorage(mappingsToFullMappingStructure(mappings));
-  renderMappingsOnPage();
+  updateAndSaveMappings(newMappings);
 };
 
 const keysDownToElements = () => {
@@ -380,7 +422,7 @@ deployConfigEl.addEventListener("click", (evt) => {
       e.message.includes("is not a function")
     ) {
       alert(
-        "Sorry, there's a race condition error. Try refreshing the page and rebuilding."
+        "Sorry, there's a race condition error. Try refreshing the page and rebuilding. Also let NessDan know!"
       );
     } else {
       alert("A new error has occurred, please let NessDan know!");
@@ -389,6 +431,12 @@ deployConfigEl.addEventListener("click", (evt) => {
     console.error(e);
   }
 });
+
+loadConfigFromFileEl.addEventListener(
+  "change",
+  checkAndSetMappingsConfigFile,
+  false
+);
 
 renderMappingsOnPage(); // In case we loaded some mappings
 watchActionInputs();
