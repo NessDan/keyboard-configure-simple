@@ -1,4 +1,11 @@
-import { actionsToStrings, LStick, RStick, Button, DPad } from "../constants/enums.js";
+import {
+  actionsToStrings,
+  LStick,
+  RStick,
+  Button,
+  DPad,
+  DPadMappings,
+} from "../constants/enums.js";
 import { keyEventCodeToC } from "../constants/enums.js";
 
 export const SavedMappings = (idx, mapping) => {
@@ -21,7 +28,7 @@ export const SavedMappings = (idx, mapping) => {
       actionOutputValue = `🔘 ${mapping.action.button}`;
       break;
     case DPad:
-      actionOutputValue = `${mapping.action.dpad}`;
+      actionOutputValue = `${DPadMappings[mapping.action.dpad]}`;
       break;
   }
 
