@@ -1,4 +1,4 @@
-import angles from "./constants/angles.js";
+import angles from "./shared/constants/angles.js";
 import {
   LStick,
   RStick,
@@ -7,9 +7,9 @@ import {
   actionOrders,
   actionSortOrder,
   keyEventCodeToC,
-} from "./constants/enums.js";
+} from "./shared/constants/enums.js";
 import { SavedMappings } from "./components/SavedMappings.js";
-import { mappingsToBinary } from "./keyboard-config-to-hardware/web-to-hardware-config.js";
+import { mappingsToBinary } from "./shared/hardware/web-to-hardware-config.js";
 
 const deployConfigEl = document.getElementById("deploy-config");
 const deleteConfigEl = document.getElementById("delete-config");

@@ -5,8 +5,8 @@ import {
   Button,
   DPad,
   DPadMappings,
-} from "../constants/enums.js";
-import { keyEventCodeToC } from "../constants/enums.js";
+} from "../shared/constants/enums.js";
+import { keyEventCodeToC } from "../shared/constants/enums.js";
 
 export const SavedMappings = (idx, mapping) => {
   const flattenedKeys = mapping.keys.map((keyGroup) => {
