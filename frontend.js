@@ -9,7 +9,7 @@ import {
   keyEventCodeToC,
 } from "./constants/enums.js";
 import { SavedMappings } from "./components/SavedMappings.js";
-import { mappingsToBinary } from "./keyboard-config-to-hardware/webToHardwareConfig.js";
+import { mappingsToBinary } from "./keyboard-config-to-hardware/web-to-hardware-config.js";
 
 const deployConfigEl = document.getElementById("deploy-config");
 const deleteConfigEl = document.getElementById("delete-config");
