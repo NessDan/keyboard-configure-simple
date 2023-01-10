@@ -2,26 +2,34 @@
 <html>
   <head>
     <title>keyboard.gg - Configuration Tool</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
     <script type="text/javascript">
       // Sets up the WASM printf to be captured properly
       let dataBlob;
-      var Module = typeof Module != 'undefined' ? Module : {};
+      var Module = typeof Module != "undefined" ? Module : {};
       Module.preRun = [];
       Module.postRun = [];
       Module.print = (printOutput) => {
         dataBlob = printOutput.split(",");
       };
       Module.onRuntimeInitialized = () => {
-        window.buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, ["string"]);
+        window.buildEdgeguardConfigBlob = Module.cwrap("buildguard", null, [
+          "string",
+        ]);
       };
     </script>
     <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
-    <h1>Edgeguard Baremetal Configuration Tool <em><small>(Pre-Alpha)</small></em> <br /><small style="font-size:12px;font-weight:normal">This tool is for internal use only.</small></h1>
+    <h1>
+      Edgeguard Baremetal Configuration Tool
+      <em><small>(Pre-Alpha)</small></em> <br /><small
+        style="font-size: 12px; font-weight: normal"
+        >This tool is for internal use only.</small
+      >
+    </h1>
     <p>Last build size: <span id="config-size">?</span> of maximum 8192</p>
     <div class="key-mapping-row">
       <div class="key-group" id="key-1-group">
@@ -62,7 +70,7 @@
 
       <div class="key-group">
         <div class="order big">
-          <span class="order-button">=</button>
+          <span class="order-button">=</span>
         </div>
 
         <div class="output big">
@@ -73,8 +81,24 @@
             <option value="dpad">D-Pad</option>
           </select>
           <div id="angle-select-wrapper">
-            <input type="number" name="angle-select" id="angle-select" step="15" min="0" max="360" value="0" />&deg; @ 
-            <input type="number" name="stick-distance" id="stick-distance" step="5" min="0" max="100" value="100" />%
+            <input
+              type="number"
+              name="angle-select"
+              id="angle-select"
+              step="15"
+              min="0"
+              max="360"
+              value="0"
+            />&deg; @
+            <input
+              type="number"
+              name="stick-distance"
+              id="stick-distance"
+              step="5"
+              min="0"
+              max="100"
+              value="100"
+            />%
           </div>
           <select name="dpad-direction-select" id="dpad-direction-select">
             <option value="0">D-Pad Up ⬆</option>
@@ -112,17 +136,17 @@
         <h2>Left Stick</h2>
         <div id="saved-mappings-lstick"></div>
       </section>
-      
+
       <section>
         <h2>Right Stick</h2>
         <div id="saved-mappings-rstick"></div>
       </section>
-      
+
       <section>
         <h2>Buttons</h2>
         <div id="saved-mappings-button"></div>
       </section>
-      
+
       <section>
         <h2>D-Pad</h2>
         <div id="saved-mappings-dpad"></div>
@@ -132,7 +156,7 @@
     <button id="deploy-config">Build, Connect, and Save to Device</button>
     <button id="delete-config">Delete Saved Config &amp; Refresh</button>
     <button id="save-to-file">Save Profile to Disk</button>
-    <input type="file" id="load-from-file" accept=".keyboardgg.json"/>
+    <input type="file" id="load-from-file" accept=".keyboardgg.json" />
 
     <script type="module" src="frontend.js"></script>
     <script type="module" src="keyboard-config-to-hardware/index.js"></script>
