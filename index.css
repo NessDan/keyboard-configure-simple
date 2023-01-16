@@ -57,9 +57,10 @@ body {
 #profile-options {
   position: sticky;
   bottom: 0px;
-  display: flex;
+  display: inline-flex;
   flex-direction: row-reverse;
   background-color: white;
+  float: right;
 }
 
 #profile-options > * {
