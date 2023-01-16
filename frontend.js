@@ -85,15 +85,6 @@ const mappingsToFullMappingStructure = (mappings) => {
   ];
 };
 
-// https://stackoverflow.com/a/34156339/231730
-function download(content, fileName, contentType) {
-  var a = document.createElement("a");
-  var file = new Blob([content], { type: contentType });
-  a.href = URL.createObjectURL(file);
-  a.download = fileName;
-  a.click();
-}
-
 // https://stackoverflow.com/a/26298948/231730
 function readSingleFile(evt) {
   var file = evt.target.files[0];
@@ -373,6 +364,15 @@ document.querySelectorAll("input, select, option").forEach((inputEl) => {
 });
 
 saveConfigToDiskEl.addEventListener("click", (evt) => {
+  // https://stackoverflow.com/a/34156339/231730
+  function download(content, fileName, contentType) {
+    var a = document.createElement("a");
+    var file = new Blob([content], { type: contentType });
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+  }
+
   evt.preventDefault();
 
   const mappingsToDownload = mappingsToFullMappingStructure(mappings);
@@ -381,7 +381,7 @@ saveConfigToDiskEl.addEventListener("click", (evt) => {
   if (fileName) {
     download(
       JSON.stringify(mappingsToDownload),
-      fileName + ".keyboardgg.json",
+      fileName + ".keyboardgg",
       "application/json"
     );
   } else {
@@ -392,7 +392,7 @@ saveConfigToDiskEl.addEventListener("click", (evt) => {
       [date.getHours(), date.getMinutes(), date.getSeconds()].join("-");
     download(
       JSON.stringify(mappingsToDownload),
-      fileNameDate.toLocaleString() + ".keyboardgg.json",
+      fileNameDate.toLocaleString() + ".keyboardgg",
       "application/json"
     );
   }
