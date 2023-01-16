@@ -153,14 +153,22 @@
       </section>
     </div>
 
-    <button id="deploy-config">Build, Connect, and Save to Device</button>
-    <button id="delete-config">Delete Saved Config &amp; Refresh</button>
-    <button id="save-to-file">Save Profile to Disk</button>
-    <input
-      type="file"
-      id="load-from-file"
-      accept=".keyboardgg,.keyboardgg.json"
-    />
+    <footer id="profile-options">
+      <button id="deploy-config">✅ Save to Edgeguard</button>
+      <button id="delete-config">🗑️ Clear Config</button>
+      <button id="save-to-file">💾 Save Profile as File</button>
+      <button>
+        <label for="load-from-file">
+          📁 Load Profile from File
+          <input
+            class="hidden"
+            type="file"
+            id="load-from-file"
+            accept=".keyboardgg,.keyboardgg.json"
+          />
+        </label>
+      </button>
+    </footer>
 
     <script type="module" src="frontend.js"></script>
     <script

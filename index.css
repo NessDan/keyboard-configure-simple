@@ -1,3 +1,7 @@
+body {
+  margin: 0 8px;
+}
+
 .key-mapping-row,
 .key-group,
 .key,
@@ -48,4 +52,20 @@
 
 .saved-mapping:hover .delete-mapping {
   visibility: visible;
+}
+
+#profile-options {
+  position: sticky;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: white;
+}
+
+#profile-options > * {
+  margin: 8px;
+}
+
+#load-from-file::before {
+  content: "📖 Load Profile from File: ";
 }
