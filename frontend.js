@@ -374,7 +374,7 @@ deleteConfigEl.addEventListener("click", (evt) => {
     "You sure you want to delete the config from your browser storage?"
   );
 
-  wantsToDelete ? deleteFromLocalStorage() : null;
+  wantsToDelete && deleteFromLocalStorage();
 
   window.location.reload();
 });
