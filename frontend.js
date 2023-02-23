@@ -109,7 +109,6 @@ function readSingleFile(evt) {
 
 const checkAndSetMappingsConfigFile = async (evt) => {
   try {
-    debugger;
     let contents = await readSingleFile(evt);
     contents = JSON.parse(contents);
 
