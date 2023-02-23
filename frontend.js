@@ -9,6 +9,7 @@ import {
   keyEventCodeToC,
 } from "./shared/constants/enums.js";
 import { SavedMappings } from "./components/SavedMappings.js";
+import { saveProfileToJSON } from "./shared/profiles/save.js";
 import { mappingsToBinary } from "./shared/hardware/web-to-hardware-config.js";
 
 const deployConfigEl = document.getElementById("deploy-config");
