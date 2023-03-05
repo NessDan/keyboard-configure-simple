@@ -388,17 +388,17 @@ deployConfigEl.addEventListener("click", (evt) => {
 
     configSizeEl.innerHTML = sizeOfConfig;
   } catch (e) {
-    if (
-      e.message.includes("buildEdgeguard") &&
-      e.message.includes("is not a function")
-    ) {
-      alert(
-        "Sorry, there's a race condition error. Try refreshing the page and rebuilding. Also let NessDan know!"
-      );
-    } else {
-      alert("A new error has occurred, please let NessDan know!");
-      alert(e.message);
+    alert("A new error has occurred, please let NessDan know!");
+
+    let message;
+
+    try {
+      message = JSON.stringify(e);
+    } catch (e) {
+      message = e;
     }
+    alert(message);
+
     console.error(e);
   }
 });
