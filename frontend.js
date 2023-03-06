@@ -177,10 +177,12 @@ addMappingEl.addEventListener("click", (evt) => {
     keyGroups[groupCounter][keyInGroupCounter] = keyDown;
     keyInGroupCounter++;
 
-    // If we're dealing with a key that has a corresponding orderButton (last key doesn't have one)
-    if (keyIdx < orderBtnEls.length) {
-      // Check the corresponding order button's text to see whether we start a new array in keysDown or keep adding
-      // to the existing one
+    const moreKeysAhead = keyIdx < keysDown.length - 1;
+
+    // If there's a key ahead of us
+    if (moreKeysAhead) {
+      // Check the corresponding order button's text to see whether we
+      // start a new array in keysDown or keep adding to the existing one
       if (orderBtnEls[keyIdx].innerText === "⇾") {
         groupCounter++;
         keyInGroupCounter = 0;
