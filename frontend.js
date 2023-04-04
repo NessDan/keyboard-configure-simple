@@ -1,4 +1,3 @@
-import angles from "./shared/constants/angles.js";
 import {
   LStick,
   RStick,
