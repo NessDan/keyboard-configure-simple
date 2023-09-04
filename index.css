@@ -1,5 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0 8px;
+}
+
+.flexrow {
+  display: flex;
+  flex-direction: row;
 }
 
 .key-mapping-row,
@@ -13,18 +22,23 @@ body {
   flex-wrap: wrap;
 }
 
+.key-mapping-row {
+  justify-content: flex-end;
+  flex: 6;
+  align-items: flex-start;
+}
+
 .key {
-  height: 36px;
-  min-width: 36px;
+  min-width: 58px;
   padding: 8px;
-  font-size: 2em;
+  font-size: 1em;
   margin: 0 6px;
   border: 12px inset #e3e3e3;
   background: #eee;
 }
 
 .order-button {
-  font-size: 1.5em;
+  font-size: 1.2em;
   width: 36px;
   height: 36px;
 }
@@ -44,6 +58,19 @@ body {
 
 .output.big * {
   font-size: 24px;
+}
+
+#saved-mappings {
+  flex: 3;
+  margin-left: 50px;
+  max-height: calc(100vh - 200px);
+  overflow: scroll;
+}
+
+#saved-mappings h2 {
+  position: sticky;
+  top: 0;
+  background-color: white;
 }
 
 .delete-mapping {
