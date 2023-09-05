@@ -22,7 +22,15 @@ export const SavedMappings = (idx, mapping) => {
   switch (mapping.action.type) {
     case LStick:
     case RStick:
-      actionOutputValue = `🕹️ ${mapping.action.angle}&deg; @ ${mapping.action.stickDistance}%`;
+      actionOutputValue = `🕹️ ${mapping.action.angle}&deg; 
+
+      <div class="angle-circle-container">
+        <div class="angle-circle">
+          <div class="vert-line"></div>
+          <div class="hori-line"></div>
+          <div class="active-line" style="--angle:${mapping.action.angle}deg;"></div>
+        </div>
+      </div> @ ${mapping.action.stickDistance}%`;
       break;
     case Button:
       actionOutputValue = `🔘 ${mapping.action.button}`;
