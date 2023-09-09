@@ -144,6 +144,8 @@ body {
   position: sticky;
   top: 0;
   background-color: white;
+  /* Make sure it's on top of the angle-circle */
+  z-index: 1;
 }
 
 .delete-mapping {
