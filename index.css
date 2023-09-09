@@ -17,6 +17,8 @@ body {
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  /* Tall enough to not be on top of the footer actions */
+  max-height: calc(100vh - 200px);
 }
 
 .key-mapping-row {
@@ -135,7 +137,6 @@ body {
 #saved-mappings {
   flex: 3;
   margin-left: 50px;
-  max-height: calc(100vh - 200px);
   overflow: scroll;
 }
 
