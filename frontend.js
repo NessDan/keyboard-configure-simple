@@ -52,6 +52,8 @@ const stickDistanceEl = document.getElementById("stick-distance");
 const angleSelectWrapperEl = document.getElementById("angle-select-wrapper");
 const dpadSelectEl = document.getElementById("dpad-direction-select");
 const buttonSelectEl = document.getElementById("button-select");
+const helperEl = document.getElementById("helper");
+const helperAngleEl = document.getElementById("helper-angle");
 
 const loadFromLocalStorage = () => {
   try {
@@ -317,16 +319,19 @@ const watchActionInputs = () => {
     switch (activeActionType) {
       case LStick:
       case RStick:
+        helperEl.className = "helper stick";
         angleSelectWrapperEl.classList.remove("hidden");
         dpadSelectEl.classList.add("hidden");
         buttonSelectEl.classList.add("hidden");
         break;
       case Button:
+        helperEl.className = "helper button";
         buttonSelectEl.classList.remove("hidden");
         dpadSelectEl.classList.add("hidden");
         angleSelectWrapperEl.classList.add("hidden");
         break;
       case DPad:
+        helperEl.className = "helper dpad";
         dpadSelectEl.classList.remove("hidden");
         buttonSelectEl.classList.add("hidden");
         angleSelectWrapperEl.classList.add("hidden");
@@ -339,8 +344,9 @@ const watchActionInputs = () => {
   showRelevantActionInputs();
 };
 
-angleSelectEl.addEventListener("change", (evt) => {
-  selectedAngle = angleSelectEl.value;
+angleSelectEl.addEventListener("input", (evt) => {
+  selectedAngle = angleSelectEl.value % 360;
+  helperAngleEl.style.setProperty("--angle", `${selectedAngle}deg`);
 });
 
 stickDistanceEl.addEventListener("change", (evt) => {
