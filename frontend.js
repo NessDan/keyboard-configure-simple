@@ -14,6 +14,7 @@ import { mappingsToBinary } from "./shared/hardware/web-to-hardware-config.js";
 const deployConfigEl = document.getElementById("deploy-config");
 const deleteConfigEl = document.getElementById("delete-config");
 const saveConfigToDiskEl = document.getElementById("save-to-file");
+const profileNumberEl = document.querySelector("#profile-number");
 const keyTextEls = [
   document.getElementById("key-1-text"),
   document.getElementById("key-2-text"),
@@ -389,8 +390,10 @@ deleteConfigEl.addEventListener("click", (evt) => {
 deployConfigEl.addEventListener("click", (evt) => {
   // Only one profile for now
   try {
+    const profileNumber = Number(profileNumberEl?.value) || 1;
     const sizeOfConfig = mappingsToBinary(
-      mappingsToFullMappingStructure(mappings)
+      mappingsToFullMappingStructure(mappings),
+      profileNumber
     );
 
     configSizeEl.innerHTML = sizeOfConfig;
