@@ -12,11 +12,15 @@ import { saveProfileToJSON } from "./shared/profiles/save.js";
 import { mappingsToBinary } from "./shared/hardware/web-to-hardware-config.js";
 import { wasd24Profile } from "./profiles/wasd24Profile.js";
 import { wasd24QEZCProfile } from "./profiles/wasd24QEZCProfile.js";
-import { connectToAdapter } from "../wizard/shared/hardware/device.js";
+import {
+  connectToAdapter,
+  getMaxProfileCount,
+} from "./shared/hardware/device.js";
 
-const deployConfigEl = document.getElementById("deploy-config");
+const deployProfileButtonEl = document.getElementById("deploy-config");
 const deleteConfigEl = document.getElementById("delete-config");
 const saveConfigToDiskEl = document.getElementById("save-to-file");
+const connectAdapterButtonEl = document.getElementById("connect-adapter");
 const profileNumberEl = document.querySelector("#profile-number");
 const keyTextEls = [
   document.getElementById("key-1-text"),
@@ -118,6 +122,50 @@ const loadJsonProfile = (profile) => {
   if (profile[0].version === "1.0.0" && profile[0].configs.length > 0) {
     updateAndSaveMappings(profile[0].configs);
   }
+};
+
+const updateProfileSelect = async (device) => {
+  const profileSelectEl = document.getElementById("profile-number");
+
+  if (!device) {
+    profileSelectEl.disabled = true;
+    profileSelectEl.title = "Please connect device to select profile";
+    profileSelectEl.innerHTML = `<option value="1">1</option>`;
+    return;
+  }
+
+  const maxProfiles = await getMaxProfileCount(device);
+
+  console.log("Max profile count", maxProfiles);
+
+  profileSelectEl.disabled = false;
+  let optionMarkup = "";
+
+  for (let i = 1; i <= maxProfiles; i++) {
+    optionMarkup += `<option value="${i}">${i}</option>`;
+  }
+
+  profileSelectEl.innerHTML = optionMarkup;
+};
+
+const showSaveHideConnect = () => {
+  deployProfileButtonEl.classList.remove("hidden");
+  connectAdapterButtonEl.classList.add("hidden");
+};
+
+const showConnectHideSave = () => {
+  deployProfileButtonEl.classList.add("hidden");
+  connectAdapterButtonEl.classList.remove("hidden");
+};
+
+const onDeviceConnect = async (device) => {
+  showSaveHideConnect();
+  await updateProfileSelect(device);
+};
+
+const onDeviceDisconnect = async () => {
+  showConnectHideSave();
+  await updateProfileSelect();
 };
 
 const checkAndSetMappingsConfigFile = async (evt) => {
@@ -391,6 +439,20 @@ document.querySelectorAll("input, select, option").forEach((inputEl) => {
   inputEl.addEventListener("keyup", stopDefaultAndPropogation);
 });
 
+connectAdapterButtonEl.addEventListener("click", async () => {
+  const device = await connectToAdapter();
+
+  if (!device) {
+    return;
+  }
+
+  onDeviceConnect(device);
+});
+
+navigator.usb.addEventListener("disconnect", (event) => {
+  onDeviceDisconnect();
+});
+
 saveConfigToDiskEl.addEventListener("click", (evt) => {
   evt.preventDefault();
   const mappingsToDownload = mappingsToFullMappingStructure(mappings);
@@ -407,7 +469,7 @@ deleteConfigEl.addEventListener("click", (evt) => {
   window.location.reload();
 });
 
-deployConfigEl.addEventListener("click", (evt) => {
+deployProfileButtonEl.addEventListener("click", (evt) => {
   // Only one profile for now
   try {
     const profileNumber = Number(profileNumberEl?.value) || 1;
@@ -469,5 +531,7 @@ loadButtonEl.addEventListener(
   false
 );
 
-renderMappingsOnPage(); // In case we loaded some mappings
-watchActionInputs();
+document.addEventListener("DOMContentLoaded", (event) => {
+  renderMappingsOnPage(); // In case we loaded some mappings
+  watchActionInputs();
+});
