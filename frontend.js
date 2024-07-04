@@ -10,6 +10,9 @@ import {
 import { SavedMappings } from "./components/SavedMappings.js";
 import { saveProfileToJSON } from "./shared/profiles/save.js";
 import { mappingsToBinary } from "./shared/hardware/web-to-hardware-config.js";
+import { wasd24Profile } from "./profiles/wasd24Profile.js";
+import { wasd24QEZCProfile } from "./profiles/wasd24QEZCProfile.js";
+import { connectToAdapter } from "../wizard/shared/hardware/device.js";
 
 const deployConfigEl = document.getElementById("deploy-config");
 const deleteConfigEl = document.getElementById("delete-config");
@@ -43,7 +46,9 @@ const savedMappingsEls = [
   savedMappingsDPadEl,
 ];
 const configSizeEl = document.getElementById("config-size");
-const loadConfigFromFileEl = document.getElementById("load-from-file");
+const loadButtonEl = document.getElementById("load-button");
+const loadOptionsEl = document.getElementById("load-options");
+const loadFileEl = document.getElementById("load-file");
 
 // Output Elements
 const addMappingEl = document.getElementById("add-mapping");
@@ -109,14 +114,29 @@ function readSingleFile(evt) {
   });
 }
 
+const loadJsonProfile = (profile) => {
+  if (profile[0].version === "1.0.0" && profile[0].configs.length > 0) {
+    updateAndSaveMappings(profile[0].configs);
+  }
+};
+
 const checkAndSetMappingsConfigFile = async (evt) => {
   try {
-    let contents = await readSingleFile(evt);
-    contents = JSON.parse(contents);
-
-    if (contents[0].version === "1.0.0" && contents[0].configs.length > 0) {
-      updateAndSaveMappings(contents[0].configs);
+    if (evt.target.files.length === 0) {
+      // No file selected, cancel was pressed.
+      return;
     }
+
+    let profile = await readSingleFile(evt);
+
+    if (!profile) {
+      // No data in file.
+      return;
+    }
+
+    profile = JSON.parse(profile);
+
+    loadJsonProfile(profile);
   } catch (err) {
     console.error("Couldn't load config, error with mapping :(", err);
     alert("Couldn't load config, error with mapping :( Contact NessDan!");
@@ -413,9 +433,39 @@ deployConfigEl.addEventListener("click", (evt) => {
   }
 });
 
-loadConfigFromFileEl.addEventListener(
-  "change",
-  checkAndSetMappingsConfigFile,
+loadFileEl.addEventListener("change", checkAndSetMappingsConfigFile, false);
+
+loadButtonEl.addEventListener(
+  "click",
+  () => {
+    const loadAction = loadOptionsEl.value;
+    let wantsToLoad = false;
+    let profileToLoad;
+
+    switch (loadAction) {
+      case "file":
+        loadFileEl.click();
+        break;
+      case "wasd-24":
+        profileToLoad = wasd24Profile;
+        wantsToLoad = confirm(
+          "Are you sure you want to load the WASD+QE 24 Profile? This will clear the current profile."
+        );
+        break;
+      case "wasd-24-qezc":
+        profileToLoad = wasd24QEZCProfile;
+        wantsToLoad = confirm(
+          "Are you sure you want to load the WASD+QEZC 24 Profile? This will clear the current profile."
+        );
+        break;
+      default:
+        console.error("Unknown load action", loadAction);
+    }
+
+    if (wantsToLoad && profileToLoad) {
+      loadJsonProfile(profileToLoad);
+    }
+  },
   false
 );
 

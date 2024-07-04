@@ -166,7 +166,7 @@ body {
   position: sticky;
   bottom: 0px;
   display: inline-flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   background-color: white;
   float: right;
   align-items: center;
@@ -174,8 +174,4 @@ body {
 
 #profile-options > * {
   margin: 8px;
-}
-
-#load-from-file::before {
-  content: "📖 Load Profile from File: ";
 }
