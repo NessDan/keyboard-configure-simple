@@ -130,7 +130,7 @@ const updateProfileSelect = async (device) => {
   if (!device) {
     profileSelectEl.disabled = true;
     profileSelectEl.title = "Please connect device to select profile";
-    profileSelectEl.innerHTML = `<option value="1">1</option>`;
+    profileSelectEl.innerHTML = `<option value="0">1</option>`;
     return;
   }
 
@@ -142,7 +142,7 @@ const updateProfileSelect = async (device) => {
   let optionMarkup = "";
 
   for (let i = 1; i <= maxProfiles; i++) {
-    optionMarkup += `<option value="${i}">${i}</option>`;
+    optionMarkup += `<option value="${i - 1}">${i}</option>`;
   }
 
   profileSelectEl.innerHTML = optionMarkup;
@@ -472,10 +472,10 @@ deleteConfigEl.addEventListener("click", (evt) => {
 deployProfileButtonEl.addEventListener("click", (evt) => {
   // Only one profile for now
   try {
-    const profileNumber = Number(profileNumberEl?.value) || 1;
+    const profileIdx = Number(profileNumberEl?.value);
     const sizeOfConfig = mappingsToBinary(
       mappingsToFullMappingStructure(mappings),
-      profileNumber
+      profileIdx
     );
 
     configSizeEl.innerHTML = sizeOfConfig;
