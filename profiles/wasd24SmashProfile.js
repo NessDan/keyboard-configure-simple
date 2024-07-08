@@ -1,4 +1,4 @@
-export const wasd24QEZCProfile = [
+export const wasd24SmashProfile = [
   {
     version: "1.0.0",
     configs: [
@@ -891,1651 +891,251 @@ export const wasd24QEZCProfile = [
         action: { type: "lstick", angle: 225, stickDistance: "70" },
       },
       {
-        keys: [["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 315,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 45,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 225,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 135,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 315,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 225,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 45,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 135,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad2"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad2"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad1"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad1"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad3"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad3"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["NumpadEnter"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["NumpadEnter"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad1"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad1"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad3"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad3"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["NumpadEnter"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["NumpadEnter"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad2"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad2"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad3"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad3"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["NumpadEnter"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["NumpadEnter"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad2"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad2"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad1"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad1"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad2"], ["Numpad1"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad2"], ["Numpad3"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad1"], ["Numpad2"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad1"], ["Numpad3"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad3"], ["Numpad2"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["NumpadEnter"], ["Numpad3"], ["Numpad1"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["NumpadEnter"], ["Numpad1"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["NumpadEnter"], ["Numpad3"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad1"], ["NumpadEnter"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad1"], ["Numpad3"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad3"], ["NumpadEnter"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad2"], ["Numpad3"], ["Numpad1"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["NumpadEnter"], ["Numpad2"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["NumpadEnter"], ["Numpad3"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad2"], ["NumpadEnter"], ["Numpad3"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad2"], ["Numpad3"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad3"], ["NumpadEnter"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad1"], ["Numpad3"], ["Numpad2"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["NumpadEnter"], ["Numpad2"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["NumpadEnter"], ["Numpad1"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad2"], ["NumpadEnter"], ["Numpad1"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad2"], ["Numpad1"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad1"], ["NumpadEnter"], ["Numpad2"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["Numpad3"], ["Numpad1"], ["Numpad2"], ["NumpadEnter"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 315,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 45,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 225,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 135,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 315,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 225,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 45,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 135,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyI"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyI"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyU"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyU"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyO"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyO"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyP"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyP"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyU"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyU"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyO"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyO"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyP"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyP"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyI"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 270,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyI"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyO"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyO"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyP"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyP"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyI"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 90,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyI"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyU"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyU"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 180,
-          stickDistance: 100,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyI"], ["KeyU"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyI"], ["KeyO"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyU"], ["KeyI"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyU"], ["KeyO"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyO"], ["KeyI"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyP"], ["KeyO"], ["KeyU"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyP"], ["KeyU"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyP"], ["KeyO"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyU"], ["KeyP"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyU"], ["KeyO"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyO"], ["KeyP"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyI"], ["KeyO"], ["KeyU"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyP"], ["KeyI"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyP"], ["KeyO"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyI"], ["KeyP"], ["KeyO"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyI"], ["KeyO"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyO"], ["KeyP"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyU"], ["KeyO"], ["KeyI"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyP"], ["KeyI"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyP"], ["KeyU"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyI"], ["KeyP"], ["KeyU"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyI"], ["KeyU"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyU"], ["KeyP"], ["KeyI"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
-      },
-      {
-        keys: [["KeyO"], ["KeyU"], ["KeyI"], ["KeyP"]],
-        action: {
-          type: "rstick",
-          angle: 0,
-          stickDistance: 0,
-        },
+        keys: [["Numpad6"]],
+        action: { type: "rstick", angle: 90, stickDistance: 100 },
       },
       {
         keys: [["Numpad4"]],
-        action: {
-          type: "button",
-          button: "A",
-        },
-      },
-      {
-        keys: [["Numpad5"]],
-        action: {
-          type: "button",
-          button: "B",
-        },
-      },
-      {
-        keys: [["ArrowRight"]],
-        action: {
-          type: "button",
-          button: "X",
-        },
-      },
-      {
-        keys: [["Space"]],
-        action: {
-          type: "button",
-          button: "Y",
-        },
-      },
-      {
-        keys: [["Enter"]],
-        action: {
-          type: "button",
-          button: "PLUS",
-        },
-      },
-      {
-        keys: [["Minus"]],
-        action: {
-          type: "button",
-          button: "MINUS",
-        },
-      },
-      {
-        keys: [["Home"]],
-        action: {
-          type: "button",
-          button: "HOME",
-        },
-      },
-      {
-        keys: [["End"]],
-        action: {
-          type: "button",
-          button: "CAPTURE",
-        },
-      },
-      {
-        keys: [["KeyF"]],
-        action: {
-          type: "button",
-          button: "LCLICK",
-        },
+        action: { type: "rstick", angle: 270, stickDistance: 100 },
       },
       {
         keys: [["Numpad9"]],
-        action: {
-          type: "button",
-          button: "RCLICK",
-        },
+        action: { type: "rstick", angle: 30, stickDistance: 100 },
       },
       {
-        keys: [["KeyJ"]],
-        action: {
-          type: "button",
-          button: "A",
-        },
+        keys: [["Numpad3"]],
+        action: { type: "rstick", angle: 150, stickDistance: 100 },
       },
       {
-        keys: [["KeyK"]],
-        action: {
-          type: "button",
-          button: "B",
-        },
-      },
-      {
-        keys: [["KeyL"]],
-        action: {
-          type: "button",
-          button: "R",
-        },
-      },
-      {
-        keys: [["Semicolon"]],
-        action: {
-          type: "button",
-          button: "ZR",
-        },
-      },
-      {
-        keys: [["KeyM"]],
-        action: {
-          type: "button",
-          button: "L",
-        },
-      },
-      {
-        keys: [["Comma"]],
-        action: {
-          type: "button",
-          button: "ZL",
-        },
-      },
-      {
-        keys: [["Period"]],
-        action: {
-          type: "button",
-          button: "X",
-        },
-      },
-      {
-        keys: [["Equal"]],
-        action: {
-          type: "button",
-          button: "PLUS",
-        },
-      },
-      {
-        keys: [["ArrowDown"]],
-        action: {
-          type: "button",
-          button: "X",
-        },
-      },
-      {
-        keys: [["Numpad0"]],
-        action: {
-          type: "button",
-          button: "X",
-        },
-      },
-      {
-        keys: [["Numpad6"]],
-        action: {
-          type: "button",
-          button: "R",
-        },
-      },
-      {
-        keys: [["NumpadAdd"]],
-        action: {
-          type: "button",
-          button: "ZR",
-        },
+        keys: [["Numpad1"]],
+        action: { type: "rstick", angle: 210, stickDistance: 100 },
       },
       {
         keys: [["Numpad7"]],
-        action: {
-          type: "button",
-          button: "L",
-        },
+        action: { type: "rstick", angle: 330, stickDistance: 100 },
       },
-      {
-        keys: [["Numpad8"]],
-        action: {
-          type: "button",
-          button: "ZL",
-        },
-      },
-      {
-        keys: [["KeyH"]],
-        action: {
-          type: "button",
-          button: "RCLICK",
-        },
-      },
-      {
-        keys: [["Digit1"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit3"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit2"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit4"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit1"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit1"], ["Digit2"]],
-        action: {
-          dpad: 7,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit1"], ["Digit4"]],
-        action: {
-          dpad: 1,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit3"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit3"], ["Digit2"]],
-        action: {
-          dpad: 5,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit3"], ["Digit4"]],
-        action: {
-          dpad: 3,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit2"], ["Digit1"]],
-        action: {
-          dpad: 7,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit2"], ["Digit3"]],
-        action: {
-          dpad: 5,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit2"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit4"], ["Digit1"]],
-        action: {
-          dpad: 1,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit4"], ["Digit3"]],
-        action: {
-          dpad: 3,
-          type: "dpad",
-        },
-      },
-      {
-        keys: [["Digit4"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
-      },
+      { keys: [["Numpad5"]], action: { type: "button", button: "A" } },
+      { keys: [["Numpad8"]], action: { type: "button", button: "B" } },
+      { keys: [["Space"]], action: { type: "button", button: "Y" } },
+      { keys: [["Numpad0"]], action: { type: "button", button: "X" } },
+      { keys: [["ArrowRight"]], action: { type: "button", button: "X" } },
+      { keys: [["ArrowDown"]], action: { type: "button", button: "X" } },
+      { keys: [["Numpad2"]], action: { type: "button", button: "L" } },
+      { keys: [["NumpadAdd"]], action: { type: "button", button: "ZR" } },
+      { keys: [["NumpadEnter"]], action: { type: "button", button: "R" } },
+      { keys: [["Enter"]], action: { type: "button", button: "PLUS" } },
+      { keys: [["Equal"]], action: { type: "button", button: "PLUS" } },
+      { keys: [["Minus"]], action: { type: "button", button: "MINUS" } },
+      { keys: [["Home"]], action: { type: "button", button: "HOME" } },
+      { keys: [["End"]], action: { type: "button", button: "CAPTURE" } },
+      { keys: [["KeyF"]], action: { type: "button", button: "LCLICK" } },
+      { keys: [["Digit1"]], action: { dpad: 0, type: "dpad" } },
+      { keys: [["Digit3"]], action: { dpad: 4, type: "dpad" } },
+      { keys: [["Digit2"]], action: { dpad: 6, type: "dpad" } },
+      { keys: [["Digit4"]], action: { dpad: 2, type: "dpad" } },
+      { keys: [["Digit1"], ["Digit3"]], action: { dpad: 8, type: "dpad" } },
+      { keys: [["Digit1"], ["Digit2"]], action: { dpad: 7, type: "dpad" } },
+      { keys: [["Digit1"], ["Digit4"]], action: { dpad: 1, type: "dpad" } },
+      { keys: [["Digit3"], ["Digit1"]], action: { dpad: 8, type: "dpad" } },
+      { keys: [["Digit3"], ["Digit2"]], action: { dpad: 5, type: "dpad" } },
+      { keys: [["Digit3"], ["Digit4"]], action: { dpad: 3, type: "dpad" } },
+      { keys: [["Digit2"], ["Digit1"]], action: { dpad: 7, type: "dpad" } },
+      { keys: [["Digit2"], ["Digit3"]], action: { dpad: 5, type: "dpad" } },
+      { keys: [["Digit2"], ["Digit4"]], action: { dpad: 8, type: "dpad" } },
+      { keys: [["Digit4"], ["Digit1"]], action: { dpad: 1, type: "dpad" } },
+      { keys: [["Digit4"], ["Digit3"]], action: { dpad: 3, type: "dpad" } },
+      { keys: [["Digit4"], ["Digit2"]], action: { dpad: 8, type: "dpad" } },
       {
         keys: [["Digit1"], ["Digit3"], ["Digit2"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
+        action: { dpad: 6, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit3"], ["Digit4"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
+        action: { dpad: 2, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit2"], ["Digit3"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
+        action: { dpad: 6, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit2"], ["Digit4"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
+        action: { dpad: 0, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit4"], ["Digit3"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
+        action: { dpad: 2, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit4"], ["Digit2"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
+        action: { dpad: 0, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit1"], ["Digit2"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
+        action: { dpad: 6, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit1"], ["Digit4"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
+        action: { dpad: 2, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit2"], ["Digit1"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
+        action: { dpad: 6, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit2"], ["Digit4"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
+        action: { dpad: 4, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit4"], ["Digit1"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
+        action: { dpad: 2, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit4"], ["Digit2"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
+        action: { dpad: 4, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit1"], ["Digit3"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
+        action: { dpad: 6, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit1"], ["Digit4"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
+        action: { dpad: 0, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit3"], ["Digit1"]],
-        action: {
-          dpad: 6,
-          type: "dpad",
-        },
+        action: { dpad: 6, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit3"], ["Digit4"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
+        action: { dpad: 4, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit4"], ["Digit1"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
+        action: { dpad: 0, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit4"], ["Digit3"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
+        action: { dpad: 4, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit1"], ["Digit3"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
+        action: { dpad: 2, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit1"], ["Digit2"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
+        action: { dpad: 0, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit3"], ["Digit1"]],
-        action: {
-          dpad: 2,
-          type: "dpad",
-        },
+        action: { dpad: 2, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit3"], ["Digit2"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
+        action: { dpad: 4, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit2"], ["Digit1"]],
-        action: {
-          dpad: 0,
-          type: "dpad",
-        },
+        action: { dpad: 0, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit2"], ["Digit3"]],
-        action: {
-          dpad: 4,
-          type: "dpad",
-        },
+        action: { dpad: 4, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit3"], ["Digit2"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit3"], ["Digit4"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit2"], ["Digit3"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit2"], ["Digit4"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit4"], ["Digit3"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit1"], ["Digit4"], ["Digit2"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit1"], ["Digit2"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit1"], ["Digit4"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit2"], ["Digit1"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit2"], ["Digit4"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit4"], ["Digit1"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit3"], ["Digit4"], ["Digit2"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit1"], ["Digit3"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit1"], ["Digit4"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit3"], ["Digit1"], ["Digit4"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit3"], ["Digit4"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit4"], ["Digit1"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit2"], ["Digit4"], ["Digit3"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit1"], ["Digit3"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit1"], ["Digit2"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit3"], ["Digit1"], ["Digit2"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit3"], ["Digit2"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit2"], ["Digit1"], ["Digit3"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
       {
         keys: [["Digit4"], ["Digit2"], ["Digit3"], ["Digit1"]],
-        action: {
-          dpad: 8,
-          type: "dpad",
-        },
+        action: { dpad: 8, type: "dpad" },
       },
     ],
   },

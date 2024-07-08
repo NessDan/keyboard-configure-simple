@@ -12,6 +12,7 @@ import { saveProfileToJSON } from "./shared/profiles/save.js";
 import { mappingsToBinary } from "./shared/hardware/web-to-hardware-config.js";
 import { wasd24Profile } from "./profiles/wasd24Profile.js";
 import { wasd24QEZCProfile } from "./profiles/wasd24QEZCProfile.js";
+import { wasd24SmashProfile } from "./profiles/wasd24SmashProfile.js";
 import {
   connectToAdapter,
   getMaxProfileCount,
@@ -519,6 +520,12 @@ loadButtonEl.addEventListener(
         profileToLoad = wasd24QEZCProfile;
         wantsToLoad = confirm(
           "Are you sure you want to load the WASD+QEZC 24 Profile? This will clear the current profile."
+        );
+        break;
+      case "wasd-24-smash":
+        profileToLoad = wasd24SmashProfile;
+        wantsToLoad = confirm(
+          "Are you sure you want to load the 24-Angle + Numpad Tilt for Smash Profile? This will clear the current profile."
         );
         break;
       default:
